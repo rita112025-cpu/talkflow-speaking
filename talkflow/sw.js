@@ -1,5 +1,5 @@
 /* Offline shell cache. Bump VERSION when files change. */
-const VERSION = 'talkflow-v3';
+const VERSION = 'talkflow-v5';
 const FILES = ['./', './index.html', './css/app.css', './js/icons.js', './js/data.js', './js/store.js', './js/speech.js', './js/ui.js', './js/views1.js', './js/views2.js', './js/app.js', './manifest.webmanifest', './icon.svg', './icon-192.png', './icon-512.png'];
 
 self.addEventListener('install', (e) => {

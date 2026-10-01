@@ -47,50 +47,47 @@ TF.views = TF.views || {};
         <button class="iconbtn sm" data-go="#/settings" aria-label="設定">${I('gear')}</button>
       </div>
 
-      <div class="pad stack">
-        <div class="card hero">
-          <div class="row between"><span class="pill tag">依經驗值估算</span><span class="pill gem">${I('gem')} ${st.xp} XP</span></div>
-          <div class="row" style="gap:18px;margin-top:14px">
-            <div class="ring">${ring(lv.pct, { size: 128 })}<div class="c"><div><b>${lv.cur.id}</b><br><small>${lv.cur.zh}</small></div></div></div>
-            <div class="grow">
-              <h2 style="font-size:20px">CEFR 英語流暢度</h2>
-              <p class="muted small" style="margin-top:6px">${lv.next ? `再累積 <b style="color:var(--warn)">${lv.toNext} XP</b> 升到 ${lv.next.id}` : '已達最高等級，繼續保持！'}</p>
-              <p class="dim tiny" style="margin-top:6px">完成情境、發音與跟讀練習皆可獲得 XP</p>
-            </div>
-          </div>
-          <div class="hr"></div>
-          <div class="row between small"><b>${I('target')} 今日口說進度</b><span><b style="color:var(--ok)">${mins}</b> / ${st.goalMin} 分鐘</span></div>
-          <div class="bar" style="margin-top:10px"><i style="width:${pct * 100}%"></i></div>
-          <div class="row between tiny" style="margin-top:10px"><span class="muted">${left ? `再練習 ${left} 分鐘達成今日目標` : '🎉 今日目標達成！'}</span><button data-go="#/settings" style="color:var(--pri3);font-weight:700">設定目標</button></div>
+      <div class="bento">
+        <div class="t w2">
+          <p class="tt">今天已開口 ${mins} 分鐘，<em>${left ? `再 ${left} 分鐘達成 ${st.goalMin} 分鐘目標。` : '今日目標達成，太棒了！'}</em></p>
+          <div class="bar" style="margin-top:22px"><i style="width:${pct * 100}%"></i></div>
+        </div>
+        <div class="t tap" data-go="#/progress" style="justify-content:space-between">
+          <div class="ring" style="width:84px;height:84px">${ring(lv.pct, { size: 84, stroke: 8 })}<div class="c"><div><b style="font-size:24px">${lv.cur.id}</b></div></div></div>
+          <p class="tt sm" style="margin-top:26px">${lv.cur.zh}　<em>${lv.next ? `距 ${lv.next.id} 還差 ${lv.toNext} XP` : '最高等級'}</em></p>
+        </div>
+        <div class="t cta">
+          ${I('mic', 'oico')}
+          <p class="tt sm" style="margin:14px 0 18px">想自由聊聊嗎？</p>
+          <button class="obtn" data-go="#/free">Free Talk</button>
         </div>
       </div>
 
-      <div class="sec-h"><h2>${I('star')} 今日口說挑戰</h2><span class="dim tiny">每日更新</span></div>
-      <div class="pad">
-        <div class="card glow tap" data-go="#/brief/${daily.id}">
-          <div class="row wrap"><span class="pill tag">${daily.level}</span><span class="pill mute">預計 ${daily.minutes} 分鐘</span><span class="pill ok">+50 XP</span></div>
-          <h2 style="font-size:22px;margin-top:12px">${daily.em} ${esc(daily.title)}</h2>
-          <p class="dim small">${esc(daily.en)}</p>
-          <div class="note blue" style="margin-top:14px">${I('target')}<span>${esc(daily.goal)}</span></div>
-          <div class="btn" style="margin-top:16px">立即開口挑戰 ${I('arrow')}</div>
-        </div>
+      <div class="pillrow">
+        <a href="#/scenarios">情境</a><a href="#/drill/${drill.id}">發音</a><a href="#/shadow">跟讀</a><a href="#/phrasebook">金句</a><a href="#/progress">成長</a><a href="#/settings">設定</a>
       </div>
 
-      <div class="pad" style="margin-top:16px">
-        <div class="card tap row between" data-go="#/free">
-          <div class="grow"><div class="tiny" style="color:var(--ok);font-weight:800">AI 口說教練</div>
-            <h2 style="font-size:21px;margin:4px 0">隨時開口說 Free Talk</h2>
-            <p class="dim small">挑一個話題自由對話，即時抓常見語法錯誤</p></div>
-          <div class="mic sm">${I('mic')}</div>
+      <div class="bento">
+        <div class="t w2 tap" data-go="#/brief/${daily.id}">
+          <div class="row wrap" style="margin-bottom:18px"><span class="pill tag">今日挑戰 · ${daily.level}</span><span class="pill mute">${daily.minutes} 分鐘</span><span class="pill mute">+50 XP</span></div>
+          <p class="tt">${daily.em} ${esc(daily.title)}　<em>${esc(daily.goal)}</em></p>
+          <div class="gap"></div>
+          <div class="obtn" style="margin-top:22px">立即開口挑戰 ${I('arrow')}</div>
+        </div>
+        <div class="t tap" data-go="#/brief/${rec.id}">
+          <span class="pill tag" style="align-self:flex-start">情境對話</span>
+          <p class="tt sm" style="margin-top:16px">${esc(rec.title)}　<em>${rec.level}</em></p>
+        </div>
+        <div class="t tap" data-go="#/drill/${drill.id}">
+          <span class="pill tag" style="align-self:flex-start">發音特訓</span>
+          <p class="tt sm" style="margin-top:16px">${esc(drill.sym)}　<em>${S.phonPct(drill.key) == null ? '尚未練習' : '掌握 ' + S.phonPct(drill.key) + '%'}</em></p>
+        </div>
+        <div class="t w2 tap" data-go="#/shadow">
+          <span class="pill tag" style="align-self:flex-start">影子跟讀</span>
+          <p class="tt sm" style="margin-top:16px">跟著原速朗讀，　<em>練語調與節奏。</em></p>
         </div>
       </div>
-
-      <div class="sec-h"><h2>${I('target')} 專屬客製特訓</h2><button data-go="#/train">查看全部</button></div>
-      <div class="pad stack">
-        <div class="item" data-go="#/brief/${rec.id}"><div class="thumb">${rec.em}</div><div class="grow"><span class="pill tag">情境對話 ${rec.level}</span><h3 style="margin-top:4px">${esc(rec.title)}</h3><p class="dim small">${esc(rec.goal.slice(0, 26))}…</p></div><div class="go">${I('play')}</div></div>
-        <div class="item" data-go="#/drill/${drill.id}"><div class="thumb" style="background:var(--ok-soft)">🎯</div><div class="grow"><span class="pill ok">發音特訓</span><h3 style="margin-top:4px">${esc(drill.title)} ${esc(drill.sym)}</h3><p class="dim small">${esc(drill.sub)} · ${S.phonPct(drill.key) == null ? '尚未練習' : '目前 ' + S.phonPct(drill.key) + '%'}</p></div><div class="go">${I('play')}</div></div>
-        <div class="item" data-go="#/shadow"><div class="thumb" style="background:var(--warn-soft)">🎧</div><div class="grow"><span class="pill warn">跟讀練習</span><h3 style="margin-top:4px">Shadowing 影子跟讀</h3><p class="dim small">跟著原速朗讀，練語調與節奏</p></div><div class="go">${I('play')}</div></div>
-      </div></div>`,
+      <div style="height:20px"></div></div>`,
     };
   };
 
@@ -101,11 +98,13 @@ TF.views = TF.views || {};
     return {
       dock: 'scenarios',
       html: `<div class="view">
-        <div class="top"><div class="brand"><div class="avatar">${I('plane')}</div><div><b>出國開口說</b><small>${TF.SCENARIOS.length} 個真實情境 · 已通關 ${done}</small></div></div></div>
-        <div class="pad" style="margin-bottom:14px"><div class="card" style="padding:16px"><div class="row between small"><b>總體通關度</b><span>${Math.round((done / TF.SCENARIOS.length) * 100)}%</span></div><div class="bar" style="margin-top:10px"><i style="width:${(done / TF.SCENARIOS.length) * 100}%"></i></div></div></div>
+        <div class="top"><div class="brand"><div class="avatar">${I('plane')}</div><div><b>出國開口說</b><small>${TF.SCENARIOS.length} 個真實情境</small></div></div></div>
+        <div class="bento"><div class="t w2"><p class="tt">已通關 ${done} 個情境，<em>還有 ${TF.SCENARIOS.length - done} 個等你開口。</em></p>
+          <div class="bar" style="margin-top:20px"><i style="width:${(done / TF.SCENARIOS.length) * 100}%"></i></div></div></div>
+        <div style="height:8px"></div>
         <label class="search">${I('search')}<input id="q" type="search" placeholder="搜尋情境，例如：機場、點餐" aria-label="搜尋情境"></label>
         <div class="chips" id="cats">${TF.CATS.map((c, i) => `<button class="chip${i ? '' : ' on'}" data-cat="${c.id}">${c.zh}</button>`).join('')}</div>
-        <div id="list" style="margin-top:8px"></div>
+        <div class="bento" id="list" style="margin-top:6px"></div><div style="height:12px"></div>
       </div>`,
       mount(el) {
         let cat = 'all', q = '';
@@ -114,12 +113,14 @@ TF.views = TF.views || {};
           $('#list', el).innerHTML = rows.length ? rows.map((s) => {
             const sc = S.get().scen[s.id] || {};
             const status = sc.done ? `<span class="pill ok">已通關 · ${sc.best} 分</span>` : sc.attempts ? `<span class="pill warn">進行中</span>` : s.id === recId ? `<span class="pill tag">推薦</span>` : '';
-            return `<div class="scard${s.id === recId ? ' cur' : ''}" data-go="#/brief/${s.id}">
-              <div class="t"><div class="em">${s.em}</div><div class="grow"><div class="row wrap" style="gap:6px"><span class="pill mute">${s.level}</span>${status}</div>
-              <h3 style="margin-top:6px">${esc(s.title)}</h3><div class="en">${esc(s.en)}</div></div></div>
-              <p class="muted small" style="margin:12px 0">${esc(s.goal)}</p>
-              <div class="row between"><span class="dim tiny">${s.objectives.length} 個任務 · 約 ${s.minutes} 分鐘 · ${s.accent === 'en-GB' ? '🇬🇧 英式' : '🇺🇸 美式'}</span><span style="color:var(--pri3);font-weight:800" class="small">${sc.done ? '再次練習' : sc.attempts ? '繼續' : '開始'} →</span></div></div>`;
-          }).join('') : '<div class="empty">找不到符合的情境</div>';
+            const big = s.id === recId;
+            return `<div class="t tap${big ? ' w2' : ''}" data-go="#/brief/${s.id}">
+              <div class="row wrap" style="gap:6px;margin-bottom:${big ? 18 : 14}px"><span class="pill mute">${s.level}</span>${status}</div>
+              <p class="tt${big ? '' : ' sm'}">${s.em} ${esc(s.title)}　<em>${big ? esc(s.goal) : esc(s.en)}</em></p>
+              <div class="gap"></div>
+              <div class="mini" style="margin-top:16px">${s.objectives.length} 個任務 · ${s.minutes} 分鐘 · ${s.accent === 'en-GB' ? '英式' : '美式'}</div>
+              ${big ? `<div class="obtn" style="margin-top:16px">${sc.attempts ? '繼續練習' : '開始'} ${I('arrow')}</div>` : ''}</div>`;
+          }).join('') : '<div class="t w2 empty">找不到符合的情境</div>';
         };
         $('#q', el).oninput = (e) => { q = e.target.value.trim().toLowerCase(); draw(); };
         $$('[data-cat]', el).forEach((b) => (b.onclick = () => { cat = b.dataset.cat; $$('[data-cat]', el).forEach((x) => x.classList.toggle('on', x === b)); draw(); }));
@@ -136,25 +137,24 @@ TF.views = TF.views || {};
       html: `<div class="view">
         ${header('情境簡報', '#/scenarios', `<span class="pill mute">${s.level}</span>`, s.en)}
         ${steps(1)}
-        <div class="pad stack">
-          <div class="card hero">
-            <div class="row"><span class="pill tag">${s.accent === 'en-GB' ? '🇬🇧 英式口音' : '🇺🇸 美式口音'}</span><span class="pill mute">約 ${s.minutes} 分鐘</span></div>
-            <h2 style="font-size:24px;margin:12px 0 4px">${s.em} ${esc(s.title)}</h2>
-            <p class="dim small">📍 ${esc(s.place)}</p>
-            <div class="note blue" style="margin-top:14px">${I('target')}<span><b>任務目標：</b>${esc(s.goal)}</span></div>
+        <div class="bento">
+          <div class="t w2">
+            <div class="row wrap" style="margin-bottom:18px"><span class="pill tag">${s.accent === 'en-GB' ? '英式口音' : '美式口音'}</span><span class="pill mute">約 ${s.minutes} 分鐘</span></div>
+            <p class="tt">${s.em} ${esc(s.title)}　<em>${esc(s.goal)}</em></p>
+            <div class="mini" style="margin-top:18px">📍 ${esc(s.place)}</div>
           </div>
 
-          <div class="card"><h3>${I('check')} 本次溝通檢核目標</h3><div style="margin-top:6px">${s.objectives.map((o) => `<div class="check"><span class="dot">${I('check')}</span><span>${esc(o.zh)}</span></div>`).join('')}</div></div>
+          <div class="t w2"><p class="tt sm">本次要完成　<em>${s.objectives.length} 件事</em></p><div style="margin-top:8px">${s.objectives.map((o) => `<div class="check"><span class="dot">${I('check')}</span><span>${esc(o.zh)}</span></div>`).join('')}</div></div>
 
-          <div class="card row"><div class="avatar" style="width:52px;height:52px;font-size:26px;background:var(--card3)">${s.npc.em}</div><div class="grow"><div class="tiny dim">AI 角色</div><b>${esc(s.npc.name)}</b> <span class="muted small">· ${esc(s.npc.role)}</span></div><button class="speakbtn" data-say="${esc(s.turns[0].npc)}" data-lang="${s.accent}" aria-label="聽開場白">${I('vol')}</button></div>
+          <div class="t w2" style="flex-direction:row;align-items:center;gap:14px"><div class="avatar" style="width:52px;height:52px;font-size:26px">${s.npc.em}</div><div class="grow"><div class="tiny dim">AI 角色</div><p class="tt sm" style="font-size:20px">${esc(s.npc.name)}　<em>${esc(s.npc.role)}</em></p></div><button class="speakbtn" data-say="${esc(s.turns[0].npc)}" data-lang="${s.accent}" aria-label="聽開場白">${I('vol')}</button></div>
 
-          <div><div class="row between" style="margin:8px 4px 10px"><h2 style="font-size:18px">必備關鍵句 <span class="dim small">${s.phrases.length} 句</span></h2></div>
-            <div class="stack">${s.phrases.map((ph) => `<div class="phrase"><q>“${esc(ph.en)}”</q><div class="zh">${esc(ph.zh)}</div>
-              <div class="acts">${speakBtn(ph.en, s.accent)}<button class="chip" data-say="${esc(ph.en)}" data-lang="${s.accent}" data-rate="0.7">慢速</button><button class="chip" data-practice="${esc(ph.en)}" data-zh="${esc(ph.zh)}" data-lang="${s.accent}">${I('mic')} 跟著唸</button></div></div>`).join('')}</div></div>
+          <p class="tt sm" style="grid-column:span 2;padding:14px 10px 4px">必備關鍵句　<em>${s.phrases.length} 句</em></p>
+          ${s.phrases.map((ph) => `<div class="phrase"><q>${esc(ph.en)}</q><div class="zh">${esc(ph.zh)}</div>
+              <div class="acts">${speakBtn(ph.en, s.accent)}<button class="chip" data-say="${esc(ph.en)}" data-lang="${s.accent}" data-rate="0.7">慢速</button><button class="chip" data-practice="${esc(ph.en)}" data-zh="${esc(ph.zh)}" data-lang="${s.accent}">${I('mic')} 跟著唸</button></div></div>`).join('')}
 
-          <div class="note">${I('bulb')}<span><b>避坑小貼士：</b>${esc(s.tip)}</span></div>
+          <div class="t w2"><span class="pill warn" style="align-self:flex-start">避坑小貼士</span><p class="muted" style="margin-top:12px">${esc(s.tip)}</p></div>
           <button class="btn ghost" data-go="#/vocab/${s.id}?pre=1">${I('book')} 先預習 ${s.vocab.length} 個單字</button>
-          <button class="btn" data-go="#/chat/${s.id}">${I('mic')} 開始 AI 對話 ${I('arrow')}</button>
+          <button class="obtn" data-go="#/chat/${s.id}">${I('mic')} 開始 AI 對話 ${I('arrow')}</button>
           ${sc.attempts ? `<p class="dim tiny" style="text-align:center">已練習 ${sc.attempts} 次 · 最佳 ${sc.best || 0} 分</p>` : ''}
           <div style="height:30px"></div>
         </div></div>`,
@@ -311,7 +311,7 @@ TF.views = TF.views || {};
       html: `<div class="view">
         ${header('單字特訓', pre ? '#/brief/' + s.id : '#/chat/' + s.id, '', s.title)}
         ${pre ? '' : steps(3)}
-        <div class="pad stack" id="vbody"></div></div>`,
+        <div class="bento" id="vbody"></div></div>`,
       mount(el) {
         const body = $('#vbody', el);
         const finish = () => go(pre ? '#/chat/' + s.id : S.get().last[s.id] ? '#/result/' + s.id : '#/scenarios');
@@ -374,11 +374,11 @@ TF.views = TF.views || {};
       html: `<div class="view">
         ${header('評估覆盤', '#/scenarios', '', s.title)}
         ${steps(4)}
-        <div class="pad stack">
-          <div class="card hero" style="text-align:center">
-            <span class="pill ${r.task >= 60 ? 'ok' : 'warn'}">${r.task >= 60 ? '✔ 任務達成' : '任務未完全達成'}</span>
-            <div class="ring" style="margin:16px auto 0;width:150px;height:150px">${ring(r.overall / 100, { size: 150, stroke: 12, color: r.overall >= 75 ? '#22c55e' : '#fbbf24' })}<div class="c"><div><b style="font-size:42px">${r.overall}</b><br><small>/ 100</small></div></div></div>
-            <h2 style="margin-top:12px">${lvl[0]}</h2><p class="dim small">${lvl[1]}</p>
+        <div class="bento">
+          <div class="t w2" style="flex-direction:row;align-items:center;gap:18px">
+            <div class="ring" style="width:110px;height:110px">${ring(r.overall / 100, { size: 110, stroke: 10, color: r.overall >= 75 ? '#22c55e' : '#f9611b' })}<div class="c"><div><b style="font-size:34px">${r.overall}</b></div></div></div>
+            <div class="grow"><span class="pill ${r.task >= 60 ? 'ok' : 'warn'}">${r.task >= 60 ? '任務達成' : '未完全達成'}</span>
+              <p class="tt sm" style="margin-top:12px">${lvl[0]}　<em>${lvl[1]}</em></p></div>
           </div>
 
           <div class="card"><h3>多維度評測</h3>

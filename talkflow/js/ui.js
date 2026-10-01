@@ -18,9 +18,9 @@ window.TF = window.TF || {};
   function ring(pct, o) {
     o = o || {};
     const size = o.size || 128, sw = o.stroke || 11, r = (size - sw) / 2, c = 2 * Math.PI * r;
-    const col = o.color || '#22c55e';
+    const col = o.color || '#f9611b';
     return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}">
-      <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="#2a3547" stroke-width="${sw}"/>
+      <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="#36373b" stroke-width="${sw}"/>
       <circle cx="${size / 2}" cy="${size / 2}" r="${r}" fill="none" stroke="${col}" stroke-width="${sw}" stroke-linecap="round"
         stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - Math.max(0, Math.min(1, pct)))}" style="filter:drop-shadow(0 0 6px ${col}88);transition:stroke-dashoffset .8s"/></svg>`;
   }

@@ -16,12 +16,12 @@
     dock: 'train',
     html: `<div class="view">
       <div class="top"><div class="brand"><div class="avatar">${I('mic')}</div><div><b>口說特訓</b><small>針對台灣學習者的弱點練習</small></div></div></div>
-      <div class="pad stack">
-        <div class="card tap row between" data-go="#/free"><div class="grow"><span class="pill ok">Free Talk</span><h3 style="margin:8px 0 4px">自由對話教練</h3><p class="dim small">選話題開口聊，即時提醒常見語法錯誤</p></div><div class="go item" style="padding:0;border:0;background:none">${I('arrow')}</div></div>
-        <div class="card tap row between" data-go="#/shadow"><div class="grow"><span class="pill warn">Shadowing</span><h3 style="margin:8px 0 4px">影子跟讀</h3><p class="dim small">聽原速朗讀、卡拉 OK 式逐字高亮，練語調與節奏</p></div>${I('arrow')}</div>
+      <div class="bento">
+        <div class="t w2 tap" data-go="#/free"><span class="pill ok" style="align-self:flex-start">Free Talk</span><p class="tt" style="margin-top:16px">自由對話教練　<em>選話題開口聊，即時提醒常見語法錯誤。</em></p></div>
+        <div class="t w2 tap" data-go="#/shadow"><span class="pill warn" style="align-self:flex-start">Shadowing</span><p class="tt" style="margin-top:16px">影子跟讀　<em>聽原速朗讀、逐字高亮，練語調與節奏。</em></p></div>
+        <p class="tt sm" style="grid-column:span 2;padding:14px 10px 4px">發音特訓　<em>6 組台灣人常錯音</em></p>
+        ${TF.DRILLS.map((d) => { const pc = S.phonPct(d.key); return `<div class="t tap" data-go="#/drill/${d.id}"><b style="font-family:var(--mono);font-size:20px;color:var(--pri3)">${esc(d.sym)}</b><p class="tt sm" style="margin-top:12px;font-size:20px">${esc(d.title)}　<em>${esc(d.sub)}</em></p><div class="gap"></div><div class="bar" style="margin-top:14px;height:6px"><i style="width:${pc || 0}%"></i></div><div class="mini" style="margin-top:8px">${pc == null ? '尚未練習' : '掌握 ' + pc + '%'}</div></div>`; }).join('')}
       </div>
-      <div class="sec-h"><h2>${I('target')} 發音特訓（音標攻略）</h2></div>
-      <div class="pad grid2">${TF.DRILLS.map((d) => { const pc = S.phonPct(d.key); return `<div class="ph tap" data-go="#/drill/${d.id}" style="cursor:pointer"><b>${esc(d.sym)}</b><div class="small" style="font-weight:700;margin-top:4px">${esc(d.title)}</div><div class="dim tiny">${esc(d.sub)}</div><div class="bar"><i style="width:${pc || 0}%"></i></div><div class="tiny muted" style="margin-top:6px">${pc == null ? '尚未練習' : pc + '%'}</div></div>`; }).join('')}</div>
       <div style="height:20px"></div></div>`,
   });
 
@@ -93,7 +93,7 @@
     return {
       track: true,
       html: `<div class="view">${header(d.title, '#/train', `<span class="pill tag">${esc(d.sym)}</span>`, d.sub)}
-        <div class="pad stack">
+        <div class="bento">
           <div class="card"><div class="row between"><span class="small muted" id="cnt"></span><span class="pill ${S.phonPct(d.key) >= 80 ? 'ok' : 'mute'}" id="pc"></span></div>
             <div class="bar" style="margin-top:10px"><i id="pbar" style="width:0"></i></div></div>
           <div class="note blue">${I('bulb')}<span><b>發音秘訣：</b>${esc(d.tip)}</span></div>
@@ -130,7 +130,7 @@
   TF.views.shadow = () => ({
     track: true,
     html: `<div class="view">${header('影子跟讀', '#/train', `<span class="pill gem">${I('gem')} ${S.get().xp}</span>`, 'Shadowing')}
-      <div class="pad stack">
+      <div class="bento">
         <div class="row between"><span class="small muted" id="cnt"></span>
           <div class="row" style="gap:6px" id="speeds"><button class="chip sm" data-sp="0.8">0.8x</button><button class="chip sm on" data-sp="1">1.0x</button><button class="chip sm" data-sp="1.2">1.2x</button></div></div>
         <div class="card" id="box"></div>
@@ -176,7 +176,7 @@
       <label class="search">${I('search')}<input id="q" type="search" placeholder="搜尋英文或中文" aria-label="搜尋金句"></label>
       <div class="chips" id="cats">${TF.PB_CATS.map((c, i) => `<button class="chip${i ? '' : ' on'}" data-c="${c.id}">${c.zh}</button>`).join('')}<button class="chip" id="favf">${I('star')} 收藏</button></div>
       <div class="pad row" style="margin:10px 0;gap:8px"><button class="chip" id="slow">${I('vol')} 全部慢速</button><button class="chip" id="auto">${I('loop')} 自動連續播放</button></div>
-      <div class="pad stack" id="list"></div><div style="height:20px"></div></div>`,
+      <div class="bento" id="list"></div><div style="height:20px"></div></div>`,
     mount(el) {
       let cat = 'all', q = '', favOnly = false, slow = false, autoOn = false, autoT = null;
       const rate = () => (slow ? 0.75 : 1);
@@ -233,14 +233,16 @@
       dock: 'progress',
       html: `<div class="view">
         <div class="top"><div class="brand"><div class="avatar">${I('chart')}</div><div><b>學習成長數據</b><small>${S.level().cur.id} · ${st.xp} XP</small></div></div><span class="pill flame">${I('flame')} ${S.streak()} 天</span></div>
-        <div class="pad stack">
-          <div class="grid2"><div class="card" style="padding:16px"><div class="dim tiny">累計開口句數</div><b style="font-size:28px">${st.sentences}</b></div><div class="card" style="padding:16px"><div class="dim tiny">情境通關</div><b style="font-size:28px">${done}<span class="dim small"> / ${TF.SCENARIOS.length}</span></b></div></div>
+        <div class="bento">
+          <div class="t"><p class="tt">${st.sentences}<em class="blk">累計開口句數</em></p></div>
+          <div class="t"><p class="tt">${done}／${TF.SCENARIOS.length}<em class="blk">情境通關</em></p></div>
           <div class="card"><div class="row between"><h3>本週開口時長</h3><span class="pill ${pctW >= 100 ? 'ok' : 'tag'}">${pctW}%</span></div>
             <p class="muted small" style="margin:4px 0 8px">本週 ${total} / ${goalW} 分鐘（每日目標 ${st.goalMin} 分鐘）</p>
             <div class="chart">${days.map((d) => `<div class="col${d.today ? ' today' : ''}"><b>${d.m || ''}</b><i style="height:${Math.max(4, (d.m / max) * 100)}%"></i><span>${d.n}</span></div>`).join('')}</div></div>
-          <div class="card"><h3>音標掌握度</h3><p class="dim tiny" style="margin:4px 0 12px">依你在「發音特訓」的實際成績累計</p>
-            <div class="grid2">${TF.DRILLS.map((d) => { const p = S.phonPct(d.key); return `<div class="ph" data-go="#/drill/${d.id}" style="cursor:pointer"><b>${esc(d.sym)}</b><span class="tiny ${p >= 85 ? '' : 'dim'}" style="float:right">${p == null ? '未練習' : p >= 85 ? '已精通' : p >= 70 ? '優良' : '練習中'}</span><div class="bar"><i style="width:${p || 0}%"></i></div><div class="tiny muted" style="margin-top:6px">${p == null ? '—' : p + '%'}</div></div>`; }).join('')}</div></div>
-          <div><h2 style="font-size:19px;margin:6px 4px 12px">${I('trophy')} 里程碑成就</h2><div class="stack">${badges.map((b) => `<div class="badge-card${b.ok ? '' : ' lock'}"><div class="e">${b.e}</div><div class="grow"><b>${b.t}</b><div class="dim small">${b.d}</div></div>${b.ok ? `<span class="pill ok">${I('check')}</span>` : ''}</div>`).join('')}</div></div>
+          <p class="tt sm" style="grid-column:span 2;padding:14px 10px 4px">音標掌握度　<em>依發音特訓成績累計</em></p>
+          ${TF.DRILLS.map((d) => { const p = S.phonPct(d.key); return `<div class="t tap" data-go="#/drill/${d.id}"><b style="font-family:var(--mono);font-size:20px;color:var(--pri3)">${esc(d.sym)}</b><div class="gap"></div><div class="bar" style="margin-top:14px;height:6px"><i style="width:${p || 0}%"></i></div><div class="mini" style="margin-top:8px">${p == null ? '尚未練習' : p >= 85 ? '已精通 ' + p + '%' : (p >= 70 ? '優良 ' : '練習中 ') + p + '%'}</div></div>`; }).join('')}
+          <p class="tt sm" style="grid-column:span 2;padding:14px 10px 4px">里程碑成就　<em>${badges.filter((b) => b.ok).length} / ${badges.length}</em></p>
+          ${badges.map((b) => `<div class="t" style="${b.ok ? '' : 'opacity:.4'}"><div style="font-size:30px">${b.e}</div><p class="tt sm" style="margin-top:12px;font-size:18px">${b.t}　<em>${b.d}</em></p></div>`).join('')}
           <div class="card"><div class="row">${I('shield')}<h3>麥克風與隱私</h3></div>
             <p class="muted small" style="margin:8px 0 12px">語音辨識由瀏覽器提供（Chrome / Edge 會將語音送至雲端辨識）。本 App 只在你的裝置儲存練習紀錄，不上傳任何資料。</p>
             <div class="row between"><span class="small" id="micstat">狀態：檢查中…</span><button class="btn sm" id="mictest">${I('mic')} 測試麥克風</button></div></div>
@@ -264,7 +266,7 @@
     const st = S.get().settings, goal = S.get().goalMin;
     return {
       html: `<div class="view">${header('設定', '#/home')}
-        <div class="pad stack">
+        <div class="bento">
           <div class="card"><h3>每日目標</h3><div class="row wrap" style="margin-top:12px">${[5, 10, 15, 20, 30].map((m) => `<button class="chip${m === goal ? ' on' : ''}" data-g="${m}">${m} 分鐘</button>`).join('')}</div></div>
           <div class="card stack"><h3>語音朗讀</h3>
             <div><div class="small muted" style="margin-bottom:6px">口音偏好</div><select class="sel" id="acc" style="width:100%"><option value="auto">依情境自動（英式／美式）</option><option value="en-US">一律美式</option><option value="en-GB">一律英式</option></select></div>
