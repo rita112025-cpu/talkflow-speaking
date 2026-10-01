@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalkFlow 口說潮 - AI 實戰口說對話</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#862200",
+            "inverse-on-surface": "#293040",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#6bff8f",
+            "surface-tint": "#c3c0ff",
+            "on-error": "#690005",
+            "surface-bright": "#323949",
+            "outline": "#918fa1",
+            "surface-container-highest": "#2e3545",
+            "on-surface": "#dce2f7",
+            "on-secondary-fixed-variant": "#005321",
+            "background": "#0c1322",
+            "error": "#ffb4ab",
+            "on-secondary-container": "#004119",
+            "on-surface-variant": "#c7c4d8",
+            "primary": "#c3c0ff",
+            "on-primary-container": "#dad7ff",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-tertiary-container": "#ffd1c5",
+            "surface-dim": "#0c1322",
+            "surface-container-lowest": "#070e1d",
+            "outline-variant": "#464555",
+            "tertiary-fixed": "#ffdbd1",
+            "on-secondary-fixed": "#002109",
+            "surface-container-low": "#141b2b",
+            "inverse-surface": "#dce2f7",
+            "tertiary": "#ffb5a0",
+            "on-secondary": "#003915",
+            "on-background": "#dce2f7",
+            "inverse-primary": "#4d44e3",
+            "on-primary": "#1d00a5",
+            "secondary": "#4ae176",
+            "primary-container": "#4f46e5",
+            "on-tertiary-fixed": "#3b0900",
+            "tertiary-fixed-dim": "#ffb5a0",
+            "surface-container-high": "#232a3a",
+            "error-container": "#93000a",
+            "on-tertiary": "#5f1500",
+            "secondary-container": "#00b954",
+            "surface-variant": "#2e3545",
+            "secondary-fixed-dim": "#4ae176",
+            "surface-container": "#191f2f",
+            "on-primary-fixed": "#0f0069",
+            "primary-fixed": "#e2dfff",
+            "surface": "#0c1322",
+            "on-primary-fixed-variant": "#3323cc",
+            "tertiary-container": "#b33000"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Inter"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-md": ["Inter"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-xl": ["Inter"],
+            "phonetic-display": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "body-xl": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "phonetic-display": ["22px", { "lineHeight": "30px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    /* Custom wave animation */
+    @keyframes wavePulse {
+      0%, 100% { height: 6px; }
+      50% { height: 38px; }
+    }
+    .wave-bar {
+      animation: wavePulse 1.4s ease-in-out infinite;
+    }
+    /* Ripple for recording mic */
+    @keyframes rippleHalo {
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.65); opacity: 0; }
+    }
+    .mic-ripple-1 {
+      animation: rippleHalo 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    }
+    .mic-ripple-2 {
+      animation: rippleHalo 2s cubic-bezier(0, 0.2, 0.8, 1) infinite 0.75s;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md antialiased selection:bg-primary-container selection:text-white">
+<!-- ================= TOP APP BAR (Shared Anchor) ================= -->
+<header class="bg-surface-dim sticky top-0 z-40 w-full border-b border-outline-variant/20 shadow-none backdrop-blur-md bg-opacity-95">
+<div class="flex justify-between items-center w-full px-margin max-w-[480px] mx-auto py-3">
+<!-- Left: Brand / Headline -->
+<div class="flex items-center gap-2">
+<span class="text-headline-md font-headline-md font-extrabold text-primary tracking-tight">TalkFlow 口說潮</span>
+</div>
+<!-- Right: Trailing Streak Action Badge -->
+<div class="flex items-center gap-1.5 px-3 py-1 rounded-full bg-tertiary-container/20 border border-tertiary/30">
+<span class="material-symbols-outlined text-tertiary text-[18px]" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-label-md font-label-md text-tertiary font-bold tracking-tight">14 天連續</span>
+</div>
+</div>
+</header>
+<!-- ================= TUTOR CONTEXT BAR (Screen Specific) ================= -->
+<section class="w-full max-w-[480px] mx-auto px-margin pt-2.5 pb-2 border-b border-outline-variant/15 bg-surface-container-low/60 backdrop-blur-sm">
+<div class="flex items-center justify-between">
+<!-- Tutor Identity & Real-time State -->
+<div class="flex items-center gap-3">
+<div class="relative">
+<img class="w-11 h-11 rounded-full object-cover ring-2 ring-primary/40 shadow-md shadow-primary/20" data-alt="Close-up professional portrait of Sophia, a friendly and stylish American English tutor wearing minimal over-ear headphones, softly smiling against an indigo-lit modern tech studio background with warm rim lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKqxgo_E_jD4T3yMXbi5Oxl5ioAYS2r7slv_kFELUIflDV_d9ReDlLNirGPKWPCzBid7oyJ3hzKMs8T9H-t2dJxAfeK7Tvn9wB77yYjtDcrTPdMegOdnVWalaMSKEDq5KGUzIMPa1IEDYiMqltI3hlj6EPMXolaqpNjM4uhKyHgt7tyY9G-7xnQ9zEjML665Eia6eggvuVuFV4Ax-OPx0oWxEEE-EWr8yKF0cckjqDnBdc_DxOQJdMpA"/>
+<span class="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-secondary ring-2 ring-surface-dim animate-pulse"></span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h1 class="text-body-lg font-body-xl text-on-surface font-semibold leading-tight">Sophia</h1>
+<span class="text-[10px] font-label-sm px-1.5 py-0.5 rounded-md bg-primary-container/30 text-primary border border-primary/25">美式母語教練</span>
+</div>
+<div class="flex items-center gap-1.5 mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="text-label-sm font-label-sm text-secondary tracking-wide">線上即時傾聽中</span>
+</div>
+</div>
+</div>
+<!-- Meta Pill & Action Controls -->
+<div class="flex items-center gap-2">
+<div class="flex flex-col items-end">
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-surface-container-highest text-primary font-bold border border-outline-variant/40">
+            B2 適應難度
+          </span>
+<span class="text-[11px] font-body-sm text-on-surface-variant/80 mt-1">情境：倫敦咖啡館點餐</span>
+</div>
+<button class="p-2 rounded-full text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" title="對話設定與回饋">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ================= CONVERSATION CANVAS (Main Chat Area) ================= -->
+<main class="flex-1 w-full max-w-[480px] mx-auto px-margin pt-4 pb-44 space-y-5 overflow-y-auto">
+<!-- Time indicator -->
+<div class="flex justify-center">
+<span class="text-label-sm font-label-sm text-outline px-3 py-1 rounded-full bg-surface-container/60 border border-outline-variant/20">
+        Today 10:24 AM · 倫敦卡姆登街角咖啡
+      </span>
+</div>
+<!-- AI Tutor Message #1 -->
+<div class="flex items-start gap-2.5 max-w-[90%]">
+<img class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30 mt-1 flex-shrink-0" data-alt="Avatar icon of tutor Sophia with clean studio aesthetic, soft lilac lighting, and gentle expression, representing an intelligent conversational English mentor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyc4QcR3O0K79ldo64I7CDfhP7YYQCieO8NQBQUGW9X-AjWwG5apT2mpHo5URG-oBV6S4vmZuzSM_xjm-7nppjPmFf6oP-n-IwVaS5M1JLYHPW1fZXW8xXHQ3ME9m1tKehlAiE9dsC6nUd0bvVPpfil61Ga885gGZPr5sO9y9LD9HFeQ5Zz5QALP0S-PcHGe_1ZyWlb7ItmP9GoKABqTpIiH-e9xNGKGUMQo8a_gAV_VR7JpzbE6IzjQ"/>
+<div class="space-y-2">
+<!-- Message Card -->
+<div class="bg-surface-container p-space-md rounded-2xl rounded-tl-sm border border-white/5 shadow-md shadow-black/20">
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+            Good morning! Welcome to Camden Coffee. What can I get started for you today?
+          </p>
+<!-- Audio Playback Pill -->
+<div class="mt-3 pt-2.5 border-t border-outline-variant/20 flex flex-wrap items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/20 hover:bg-primary-container/30 border border-primary/30 text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+<span class="text-label-md font-label-md font-semibold">播放示範語音 0:04</span>
+</button>
+<button class="inline-flex items-center gap-1 text-label-sm font-label-sm text-outline hover:text-on-surface transition-colors py-1 px-2 rounded-lg" onclick="document.getElementById('trans-1').classList.toggle('hidden')">
+<span class="material-symbols-outlined text-[15px]">translate</span>
+<span>查看中文翻譯</span>
+</button>
+</div>
+<!-- Translation Reveal Box -->
+<div class="hidden mt-2 p-2 rounded-lg bg-surface-container-high/70 border border-outline-variant/20 text-body-sm font-body-sm text-on-surface-variant" id="trans-1">
+            早安！歡迎光臨卡姆登咖啡。今天想先為您準備些什麼呢？
+          </div>
+</div>
+</div>
+</div>
+<!-- User Speech Bubble -->
+<div class="flex flex-col items-end ml-auto max-w-[90%] space-y-1.5">
+<div class="bg-primary-container text-on-primary-container p-space-md rounded-2xl rounded-tr-sm shadow-lg shadow-primary-container/20 border border-primary/20">
+<p class="text-body-lg font-body-lg text-white font-medium leading-relaxed">
+          Hi! I'd like an iced oat milk latte, please. Could you make it less sweet?
+        </p>
+</div>
+<!-- Real-time Transcribe & Pronunciation Evaluation Badge -->
+<div class="flex items-center gap-2 pr-1">
+<span class="flex items-center gap-1 text-[11px] font-label-sm text-secondary bg-surface-container-low px-2.5 py-1 rounded-full border border-secondary/30 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+<span>即時語音轉譯準確率 94%</span>
+</span>
+<span class="text-label-sm font-label-sm text-primary bg-primary-container/20 px-2 py-0.5 rounded-full">
+          自然語調
+        </span>
+</div>
+</div>
+<!-- AI Tutor Message #2 (Follow-up) -->
+<div class="flex items-start gap-2.5 max-w-[92%]">
+<img class="w-8 h-8 rounded-full object-cover ring-1 ring-primary/30 mt-1 flex-shrink-0" data-alt="Sophia friendly portrait thumbnail with subtle purple bokeh background, exuding encouraging English conversational coach energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJssYtKK4ilwFdkDPqamCMD6SePHWvv4ZGJJFjZaQugLA9MSyrHNx1LTwaiODRQtZ82KrLrHporMcs8GnDF5xw_gJ5xrMWtM3YyqS5MIf8obj_E6i7guGmX3eo0D8VaZGD845I_LCGM07HQ0dje100NiFU3TRC7AXQHnnLLqUrE2uf86qzbO36PzF57n1oq4kdmU0jgIjxoT9QzVPo8djLe72Jc4NZfRPBvPf69OJ1YASXEaojge64lA"/>
+<div class="space-y-2 flex-1">
+<div class="bg-surface-container p-space-md rounded-2xl rounded-tl-sm border border-white/5 shadow-md shadow-black/20">
+<p class="text-body-lg font-body-lg text-on-surface leading-relaxed">
+            Certainly! One iced oat latte with half syrup. Anything to eat with that? Our croissants just came out of the oven.
+          </p>
+<!-- Action & Learning Chips inside bubble -->
+<div class="mt-3 pt-2.5 border-t border-outline-variant/20 flex flex-wrap items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary-container/20 hover:bg-primary-container/30 border border-primary/30 text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+<span class="text-label-md font-label-md font-semibold">示範原音 0:06</span>
+</button>
+<span class="inline-flex items-center gap-1 text-[11px] font-label-sm text-outline-variant bg-surface-container-high px-2 py-1 rounded-full text-on-surface-variant">
+<span>片語: half syrup (半糖)</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- ================= INTERACTIVE VOICE CONTROLS & HINTS ================= -->
+<!-- Fixed interaction area docked above bottom navbar -->
+<section class="fixed bottom-20 left-0 w-full z-40 pointer-events-none">
+<div class="max-w-[480px] mx-auto px-margin pointer-events-auto flex flex-col items-center">
+<!-- 1. Suggested Reply Hints (智慧接話靈感膠囊) -->
+<div class="w-full flex items-center gap-2 overflow-x-auto no-scrollbar py-1.5 mb-2.5">
+<button class="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-high/90 hover:bg-surface-bright border border-outline-variant/40 text-on-surface text-label-md font-label-md backdrop-blur-md transition-all active:scale-95 shadow-sm">
+<span>💡 "Sure, I'll take an almond croissant."</span>
+</button>
+<button class="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-high/90 hover:bg-surface-bright border border-outline-variant/40 text-on-surface text-label-md font-label-md backdrop-blur-md transition-all active:scale-95 shadow-sm">
+<span>💡 "Is the matcha scone gluten-free?"</span>
+</button>
+<button class="flex-shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-high/90 hover:bg-surface-bright border border-outline-variant/40 text-on-surface text-label-md font-label-md backdrop-blur-md transition-all active:scale-95 shadow-sm">
+<span>💡 "That's all for today, thanks!"</span>
+</button>
+</div>
+<!-- 2. Voice Input Floating Console Container -->
+<div class="w-full bg-surface-container-low/95 border border-outline-variant/30 rounded-3xl p-4 shadow-2xl backdrop-blur-2xl flex flex-col items-center">
+<!-- Live transcription floating capsule -->
+<div class="w-full mb-3 px-3.5 py-2 rounded-xl bg-surface-container-highest/60 border border-primary/20 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2 truncate">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary animate-ping"></span>
+<span class="text-body-md font-body-md text-on-surface italic truncate">
+              "Actually, do you have any vegan pastries available...?"
+            </span>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-semibold flex-shrink-0">即時辨識</span>
+</div>
+<!-- 24-Bar Dynamic Audio Waveform Visualizer -->
+<div class="w-full flex items-center justify-center gap-1 h-9 mb-3 px-4">
+<span class="wave-bar w-1 rounded-full bg-primary/40" style="animation-delay: 0.1s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary/60" style="animation-delay: 0.3s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary" style="animation-delay: 0.5s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.2s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.7s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary" style="animation-delay: 0.4s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary-container" style="animation-delay: 0.6s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.15s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary" style="animation-delay: 0.35s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary/70" style="animation-delay: 0.8s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.25s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary" style="animation-delay: 0.45s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.65s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary" style="animation-delay: 0.1s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary/50" style="animation-delay: 0.55s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.3s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary" style="animation-delay: 0.75s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary/80" style="animation-delay: 0.2s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.4s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary" style="animation-delay: 0.85s;"></span>
+<span class="wave-bar w-1 rounded-full bg-secondary" style="animation-delay: 0.5s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary/60" style="animation-delay: 0.1s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary/40" style="animation-delay: 0.3s;"></span>
+<span class="wave-bar w-1 rounded-full bg-primary/20" style="animation-delay: 0.6s;"></span>
+</div>
+<!-- Extra-Large Thumb-Friendly Glowing Microphone Trigger (Radius 72px) -->
+<div class="relative flex items-center justify-center my-1">
+<!-- Concentric Ripple Halos -->
+<div class="absolute w-[88px] h-[88px] rounded-full bg-primary-container/25 mic-ripple-1 pointer-events-none"></div>
+<div class="absolute w-[88px] h-[88px] rounded-full bg-primary/20 mic-ripple-2 pointer-events-none"></div>
+<!-- Main Floating Mic Trigger Button -->
+<button class="relative w-[72px] h-[72px] rounded-full bg-gradient-to-tr from-primary-container via-inverse-primary to-primary text-white flex items-center justify-center shadow-[0_8px_24px_-4px_rgba(79,70,229,0.55)] active:scale-95 transition-transform duration-150 ring-4 ring-primary/20 focus:outline-none" id="micTrigger" title="長按說話，放開送出">
+<span class="material-symbols-outlined text-[34px]" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+</div>
+<!-- Dynamic State Instruction -->
+<p class="mt-2 text-label-sm font-label-sm text-primary tracking-wide flex items-center gap-1 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>正在聆聽您的發音... (放開即傳送)</span>
+</p>
+</div>
+</div>
+</section>
+<!-- ================= BOTTOM NAVIGATION BAR (Shared Component JSON) ================= -->
+<!-- 
+    Execution of Shared Components JSON:
+    - label_texts: ["首頁", "AI 對話", "口說特訓", "成長紀錄"]
+    - icons: ["home", "forum", "mic", "insights"]
+    - style_active_navigation: applied strictly to "AI 對話" (matching screen intent)
+    - style_inactive_navigation: applied to the remaining items
+  -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-center pb-4 pointer-events-none">
+<div class="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-full w-[calc(100%-2.5rem)] max-w-[480px] bg-surface-container-lowest/85 dark:bg-surface-container-lowest/85 backdrop-blur-xl border border-outline-variant/30 dark:border-outline-variant/30 shadow-2xl px-3 py-2 flex items-center justify-around pointer-events-auto">
+<!-- Tab 1: 首頁 (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px]">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">首頁</span>
+</a>
+<!-- Tab 2: AI 對話 (ACTIVE - Closest match to AI Conversation Screen) -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary relative after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">forum</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-bold">AI 對話</span>
+</a>
+<!-- Tab 3: 口說特訓 (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px]">mic</span>
+<span class="text-label-sm font-label-sm mt-0.5">口說特訓</span>
+</a>
+<!-- Tab 4: 成長紀錄 (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px]">insights</span>
+<span class="text-label-sm font-label-sm mt-0.5">成長紀錄</span>
+</a>
+</div>
+</nav>
+<!-- Lightweight interaction script for UI haptics simulation -->
+<script>
+    const micBtn = document.getElementById('micTrigger');
+    if (micBtn) {
+      micBtn.addEventListener('mousedown', () => {
+        micBtn.classList.add('ring-8', 'ring-secondary/30');
+      });
+      micBtn.addEventListener('mouseup', () => {
+        micBtn.classList.remove('ring-8', 'ring-secondary/30');
+      });
+      micBtn.addEventListener('touchstart', () => {
+        micBtn.classList.add('ring-8', 'ring-secondary/30');
+      });
+      micBtn.addEventListener('touchend', () => {
+        micBtn.classList.remove('ring-8', 'ring-secondary/30');
+      });
+    }
+  </script>
+</body></html>

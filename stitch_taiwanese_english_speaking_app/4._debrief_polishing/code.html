@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Debrief &amp; Polishing - SFO T2 / CX-882</title>
+<!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS via CDN with form & container query plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim as required -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#b6c4ff",
+            "surface-container": "#eaedff",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-container-high": "#e2e7ff",
+            "outline-variant": "#c5c5d3",
+            "surface-dim": "#d2d9f4",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "outline": "#757682",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#eef0ff",
+            "on-secondary-fixed": "#251a00",
+            "background": "#faf8ff",
+            "on-surface": "#131b2e",
+            "on-primary-fixed-variant": "#264191",
+            "surface-container-low": "#f2f3ff",
+            "primary-fixed": "#dce1ff",
+            "on-tertiary-container": "#27c38a",
+            "secondary": "#785a00",
+            "secondary-container": "#fdc425",
+            "surface": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "surface-variant": "#dae2fd",
+            "tertiary-container": "#004a31",
+            "tertiary": "#00311f",
+            "secondary-fixed": "#ffdf9a",
+            "on-surface-variant": "#444651",
+            "primary-container": "#1e3a8a",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#6ffbbe",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#b6c4ff",
+            "on-secondary-fixed-variant": "#5a4300",
+            "on-primary-container": "#90a8ff",
+            "on-secondary-container": "#6d5200",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#005236",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary-fixed": "#002113",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#131b2e",
+            "surface-tint": "#4059aa",
+            "secondary-fixed-dim": "#f7be1d",
+            "inverse-surface": "#283044",
+            "on-primary-fixed": "#00164e",
+            "primary": "#00236f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-xl": "2.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-code-lg": ["JetBrains Mono"],
+            "label-code-md": ["JetBrains Mono"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-code-sm": ["JetBrains Mono"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-code-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "label-code-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "800" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "label-ui": ["13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Physical Perforated Ticket Notches & Dividers */
+    .ticket-stub {
+      position: relative;
+    }
+    .ticket-stub::before, .ticket-stub::after {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #faf8ff; /* Matches canvas background */
+      top: var(--notch-top, 64%);
+      transform: translateY(-50%);
+      z-index: 10;
+      border: 1px solid #c5c5d3;
+    }
+    .ticket-stub::before {
+      left: -9px;
+      clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+    }
+    .ticket-stub::after {
+      right: -9px;
+      clip-path: polygon(0 0, 50% 0, 50% 100%, 0 100%);
+    }
+
+    /* Subtle custom barcode pattern generator */
+    .barcode-lines {
+      background: repeating-linear-gradient(
+        90deg,
+        #131b2e,
+        #131b2e 2px,
+        transparent 2px,
+        transparent 4px,
+        #131b2e 4px,
+        #131b2e 7px,
+        transparent 7px,
+        transparent 9px,
+        #131b2e 9px,
+        #131b2e 10px,
+        transparent 10px,
+        transparent 13px
+      );
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen pb-28 selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- ================= TOP APP BAR (Shared Component Anchor) ================= -->
+<header class="sticky top-0 z-40 bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-margin py-space-sm max-w-md mx-auto">
+<!-- Leading Back Action -->
+<button aria-label="Go Back" class="flex items-center justify-center p-space-xs text-primary dark:text-inverse-primary rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+<!-- Center Headline & Status -->
+<div class="flex flex-col items-center">
+<div class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight">
+          SFO T2 / CX-882
+        </div>
+<div class="flex items-center gap-1.5 text-label-code-sm font-label-code-sm text-tertiary-container dark:text-tertiary-fixed font-bold uppercase mt-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+          Scenario Completed (任務達成)
+        </div>
+</div>
+<!-- Trailing Flight Icon / Export Summary -->
+<button aria-label="Download Summary" class="flex items-center justify-center p-space-xs text-primary dark:text-inverse-primary rounded-lg hover:bg-surface-container-high dark:hover:bg-surface-container active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-[24px]">flight_takeoff</span>
+</button>
+</div>
+</header>
+<!-- ================= MAIN SCENARIO DEBRIEF CANVAS ================= -->
+<main class="max-w-md mx-auto px-margin pt-space-md space-y-space-md">
+<!-- SUB-NAV / WAYFINDING BREADCRUMB -->
+<div class="bg-surface-container-lowest rounded-xl p-space-xs border border-outline-variant flex items-center justify-between text-label-code-sm font-label-code-sm">
+<div class="flex items-center gap-1.5 px-space-xs text-on-surface-variant line-through opacity-70">
+<span>01 CHECK-IN</span>
+</div>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<div class="flex items-center gap-1.5 px-space-xs text-on-surface-variant line-through opacity-70">
+<span>02 DELAY GATE</span>
+</div>
+<span class="material-symbols-outlined text-[14px] text-outline">chevron_right</span>
+<div class="flex items-center gap-1.5 px-space-xs text-primary font-bold bg-primary-fixed/40 rounded px-1.5 py-0.5">
+<span class="material-symbols-outlined text-[14px] text-primary">fact_check</span>
+<span>03 DEBRIEF</span>
+</div>
+</div>
+<!-- 1. SCENARIO OUTCOME BANNER & BOARDING PASS CONFIRMATION -->
+<section class="ticket-stub bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden" style="--notch-top: 66%;">
+<!-- Top Section: Flight Negotiation Metadata -->
+<div class="p-space-md bg-surface-container-lowest">
+<!-- Status & Badge Bar -->
+<div class="flex items-center justify-between mb-space-sm">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-[#ECFDF5] border border-[#A7F3D0] text-[#047857] text-label-code-sm font-label-code-sm font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+            REBOOKING SUCCESSFUL
+          </span>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">
+            CONFIRMATION: #HK-99201
+          </span>
+</div>
+<!-- Big Route Waypoint Display -->
+<div class="flex items-center justify-between my-space-sm py-space-xs border-y border-outline-variant/40">
+<div>
+<div class="text-headline-md font-headline-md font-bold text-on-background tracking-tight">SFO</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">San Francisco T2</div>
+</div>
+<div class="flex flex-col items-center flex-1 px-3">
+<span class="text-label-code-sm font-label-code-sm text-primary font-bold">AA-2088</span>
+<div class="w-full flex items-center gap-1 my-1">
+<div class="h-0.5 flex-1 bg-outline-variant"></div>
+<span class="material-symbols-outlined text-primary text-[18px]">flight</span>
+<div class="h-0.5 flex-1 bg-outline-variant"></div>
+</div>
+<span class="text-body-sm font-body-sm text-tertiary-container font-semibold">Confirmed Seat</span>
+</div>
+<div class="text-right">
+<div class="text-headline-md font-headline-md font-bold text-on-background tracking-tight">JFK</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">New York John F.</div>
+</div>
+</div>
+<!-- Boarding Details Matrix -->
+<div class="grid grid-cols-3 gap-2 pt-space-xs text-left">
+<div class="bg-surface-container-low p-2 rounded-lg border border-outline-variant/50">
+<div class="text-label-code-sm font-label-code-sm text-on-surface-variant uppercase">Gate</div>
+<div class="text-headline-sm font-headline-sm font-bold text-primary">B24</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg border border-outline-variant/50">
+<div class="text-label-code-sm font-label-code-sm text-on-surface-variant uppercase">Seat</div>
+<div class="text-headline-sm font-headline-sm font-bold text-primary">14C</div>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg border border-outline-variant/50">
+<div class="text-label-code-sm font-label-code-sm text-on-surface-variant uppercase">Voucher</div>
+<div class="text-headline-sm font-headline-sm font-bold text-secondary">$25 USD</div>
+</div>
+</div>
+</div>
+<!-- Perforated Divider Seam -->
+<div class="relative w-full border-t-2 border-dashed border-outline-variant my-1"></div>
+<!-- Bottom Stub: Score Ring & Overall Level Assessment -->
+<div class="p-space-md bg-surface-container-low flex items-center justify-between gap-space-md">
+<div class="space-y-1">
+<div class="flex items-center gap-1.5">
+<span class="text-label-code-sm font-label-code-sm text-on-surface-variant font-bold tracking-wider uppercase">OVERALL ASSESSMENT</span>
+</div>
+<div class="text-headline-sm font-headline-sm font-extrabold text-primary">
+            等級：流暢應對
+          </div>
+<div class="text-body-sm font-body-sm text-on-surface font-medium">
+            Fluent Negotiator · 禮貌協商達標
+          </div>
+</div>
+<!-- Visual Score Gauge Circle -->
+<div class="relative flex items-center justify-center shrink-0 w-20 h-20 bg-surface-container-lowest rounded-full border-4 border-tertiary-fixed shadow-sm">
+<div class="text-center">
+<span class="text-headline-md font-headline-md font-extrabold text-primary leading-none block">92</span>
+<span class="text-label-code-sm font-label-code-sm text-on-surface-variant font-bold block">/ 100</span>
+</div>
+</div>
+</div>
+<!-- Bottom Barcode Accent Line -->
+<div class="h-6 w-full barcode-lines opacity-60 bg-surface-container-low px-4"></div>
+</section>
+<!-- 2. CONVERSATION TRANSCRIPT & ACCURACY BREAKDOWN -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">graphic_eq</span>
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">逐句發音與準確度檢視</h2>
+</div>
+<span class="text-label-code-sm font-label-code-sm text-on-surface-variant">3 SENTENCES</span>
+</div>
+<div class="space-y-2.5">
+<!-- Sentence 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-sm shadow-sm space-y-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-primary-fixed text-primary font-label-code-sm text-[11px] font-bold flex items-center justify-center">01</span>
+<span class="text-label-code-sm font-label-code-sm font-bold text-on-surface-variant">PASSENGER PROMPT</span>
+</div>
+<!-- Score badge -->
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-[#ECFDF5] border border-[#A7F3D0] text-[#047857] text-label-code-sm font-label-code-sm font-bold">
+              94% (優秀)
+            </span>
+</div>
+<p class="text-body-md font-body-md font-semibold text-on-background pl-6">
+            "My connecting flight was delayed, and I might miss my connection."
+          </p>
+<div class="pl-6 pt-1 flex items-center justify-between border-t border-outline-variant/30">
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container text-primary text-label-code-sm font-label-code-sm font-medium hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+                Your Audio
+              </button>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded border border-outline-variant text-on-surface-variant text-label-code-sm font-label-code-sm font-medium hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+                Native
+              </button>
+</div>
+<span class="text-label-code-sm font-label-code-sm text-tertiary-container font-semibold">Pitch: Natural</span>
+</div>
+</div>
+<!-- Sentence 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-sm shadow-sm space-y-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-primary-fixed text-primary font-label-code-sm text-[11px] font-bold flex items-center justify-center">02</span>
+<span class="text-label-code-sm font-label-code-sm font-bold text-on-surface-variant">PASSENGER PROMPT</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-[#FEFCE8] border border-[#FEF08A] text-[#A16207] text-label-code-sm font-label-code-sm font-bold">
+              88% (良好)
+            </span>
+</div>
+<p class="text-body-md font-body-md font-semibold text-on-background pl-6">
+            "Can I be rebooked on the next flight?"
+          </p>
+<div class="pl-6 pt-1 flex items-center justify-between border-t border-outline-variant/30">
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container text-primary text-label-code-sm font-label-code-sm font-medium hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+                Your Audio
+              </button>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded border border-outline-variant text-on-surface-variant text-label-code-sm font-label-code-sm font-medium hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+                Native
+              </button>
+</div>
+<span class="text-label-code-sm font-label-code-sm text-[#A16207] font-semibold">Slight hesitation</span>
+</div>
+</div>
+<!-- Sentence 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-space-sm shadow-sm space-y-2">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-center gap-1.5">
+<span class="w-5 h-5 rounded-full bg-primary-fixed text-primary font-label-code-sm text-[11px] font-bold flex items-center justify-center">03</span>
+<span class="text-label-code-sm font-label-code-sm font-bold text-on-surface-variant">PASSENGER PROMPT</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded bg-[#ECFDF5] border border-[#A7F3D0] text-[#047857] text-label-code-sm font-label-code-sm font-bold">
+              91% (精準)
+            </span>
+</div>
+<p class="text-body-md font-body-md font-semibold text-on-background pl-6">
+            "Is there a meal voucher available?"
+          </p>
+<div class="pl-6 pt-1 flex items-center justify-between border-t border-outline-variant/30">
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-surface-container text-primary text-label-code-sm font-label-code-sm font-medium hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[16px]">play_circle</span>
+                Your Audio
+              </button>
+<button class="inline-flex items-center gap-1 px-2.5 py-1 rounded border border-outline-variant text-on-surface-variant text-label-code-sm font-label-code-sm font-medium hover:bg-surface-container-low transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[16px]">volume_up</span>
+                Native
+              </button>
+</div>
+<span class="text-label-code-sm font-label-code-sm text-tertiary-container font-semibold">Stress: Clear</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. AI BETTER WAYS TO SAY IT (High EQ / Authentic Airline English Upgrade) -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between px-1">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[22px]">auto_awesome</span>
+<div>
+<h2 class="text-headline-sm font-headline-sm font-bold text-primary">更道地的高情商講法</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant">國際航站談判心法：溫和堅定、直切規章</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed text-label-code-sm font-label-code-sm font-bold">
+          AI INSIGHT
+        </span>
+</div>
+<!-- Upgrade Card 1 -->
+<div class="bg-surface-container-lowest border-2 border-primary-container/30 rounded-xl overflow-hidden shadow-sm">
+<!-- Top Contrast Header -->
+<div class="bg-primary-container text-on-primary p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-container text-[18px]">verified</span>
+<span class="text-label-code-sm font-label-code-sm font-bold tracking-wider uppercase text-secondary-container">UPGRADE OPTION #1</span>
+</div>
+<span class="text-label-code-sm font-label-code-sm text-inverse-primary bg-primary/40 px-2 py-0.5 rounded">Diplomatic Request</span>
+</div>
+<div class="p-space-md space-y-space-sm">
+<!-- User vs Recommended comparison -->
+<div class="space-y-2">
+<!-- Original User -->
+<div class="bg-surface-container-low p-2.5 rounded-lg border-l-4 border-outline">
+<div class="text-label-code-sm font-label-code-sm text-on-surface-variant font-bold flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+                YOUR ATTEMPT (OK, BUT DIRECT)
+              </div>
+<p class="text-body-md font-body-md text-on-surface">"Can I be rebooked on the next flight?"</p>
+</div>
+<!-- Recommended Upgrade -->
+<div class="bg-surface-container p-2.5 rounded-lg border-l-4 border-secondary-container">
+<div class="text-label-code-sm font-label-code-sm text-secondary font-bold flex items-center justify-between mb-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  AI RECOMMENDED (POLITE &amp; TACTFUL)
+                </span>
+<button aria-label="Listen to pronunciation" class="flex items-center gap-1 text-primary hover:text-primary-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+<span class="text-label-code-sm font-label-code-sm">4.2s</span>
+</button>
+</div>
+<p class="text-body-md font-body-md font-bold text-primary">
+                "Could you please check if there are any seats available on the next flight to New York?"
+              </p>
+</div>
+</div>
+<!-- Cultural Context Tip in Traditional Chinese -->
+<div class="bg-[#FEFCE8] border border-[#FEF08A] rounded-lg p-space-sm text-on-surface">
+<div class="flex items-center gap-1.5 text-secondary font-bold text-label-ui font-label-ui mb-1">
+<span class="material-symbols-outlined text-[16px]">psychology</span>
+              地勤心智模型與應對解析
+            </div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+              外籍航空地勤面對大量延誤旅客時，使用 <code class="font-label-code-sm font-bold text-primary bg-primary-fixed/40 px-1 py-0.5 rounded">"Could you please check if..."</code> 會比直接命令或封閉式問句更具親和力，通常能引發對方的同理心，進而獲得更積極的協助。
+            </p>
+</div>
+</div>
+</div>
+<!-- Upgrade Card 2 -->
+<div class="bg-surface-container-lowest border-2 border-primary-container/30 rounded-xl overflow-hidden shadow-sm">
+<!-- Top Contrast Header -->
+<div class="bg-primary-container text-on-primary p-space-sm flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-secondary-container text-[18px]">verified</span>
+<span class="text-label-code-sm font-label-code-sm font-bold tracking-wider uppercase text-secondary-container">UPGRADE OPTION #2</span>
+</div>
+<span class="text-label-code-sm font-label-code-sm text-inverse-primary bg-primary/40 px-2 py-0.5 rounded">Policy-Based Rights</span>
+</div>
+<div class="p-space-md space-y-space-sm">
+<div class="space-y-2">
+<!-- Original User -->
+<div class="bg-surface-container-low p-2.5 rounded-lg border-l-4 border-outline">
+<div class="text-label-code-sm font-label-code-sm text-on-surface-variant font-bold flex items-center gap-1 mb-0.5">
+<span class="material-symbols-outlined text-[14px]">cancel</span>
+                YOUR ATTEMPT
+              </div>
+<p class="text-body-md font-body-md text-on-surface">"Is there a meal voucher available?"</p>
+</div>
+<!-- Recommended Upgrade -->
+<div class="bg-surface-container p-2.5 rounded-lg border-l-4 border-secondary-container">
+<div class="text-label-code-sm font-label-code-sm text-secondary font-bold flex items-center justify-between mb-0.5">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  AI RECOMMENDED (CLAIM WITH POLICIES)
+                </span>
+<button aria-label="Listen to pronunciation" class="flex items-center gap-1 text-primary hover:text-primary-container active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+<span class="text-label-code-sm font-label-code-sm">3.8s</span>
+</button>
+</div>
+<p class="text-body-md font-body-md font-bold text-primary">
+                "Since the layover is now over four hours, am I entitled to a meal voucher?"
+              </p>
+</div>
+</div>
+<!-- Cultural Context Tip in Traditional Chinese -->
+<div class="bg-[#FEFCE8] border border-[#FEF08A] rounded-lg p-space-sm text-on-surface">
+<div class="flex items-center gap-1.5 text-secondary font-bold text-label-ui font-label-ui mb-1">
+<span class="material-symbols-outlined text-[16px]">gavel</span>
+              航空權益關鍵用語：entitled to
+            </div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-relaxed">
+              在國際民航規範中，強調 <code class="font-label-code-sm font-bold text-primary bg-primary-fixed/40 px-1 py-0.5 rounded">"over four hours"</code> 與使用 <code class="font-label-code-sm font-bold text-primary bg-primary-fixed/40 px-1 py-0.5 rounded">"entitled to"</code> 能有條理且有法律依據地為自己爭取合理補償，避免陷入「主動乞求」的劣勢。
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. BOTTOM ACTION MODULES (Try Again & Next Scenario) -->
+<section class="pt-space-xs space-y-2.5">
+<!-- Primary Action: Next Scenario -->
+<button class="w-full py-3.5 px-4 bg-primary-container text-on-primary rounded-xl font-label-ui font-bold shadow-md hover:bg-primary transition-all duration-150 active:scale-98 flex items-center justify-between group">
+<div class="flex items-center gap-2 text-left">
+<span class="material-symbols-outlined text-secondary-container">luggage</span>
+<div>
+<div class="text-[14px] leading-tight">挑戰下個情境：海關申報與行李提取</div>
+<div class="text-label-code-sm font-label-code-sm text-on-primary-container">Next Scenario · JFK Terminal 4</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary-container group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<!-- Secondary Action: Try Again -->
+<button class="w-full py-3 px-4 bg-surface-container-lowest text-primary border-2 border-outline-variant hover:border-primary rounded-xl font-label-ui font-bold transition-all duration-150 active:scale-98 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">replay</span>
+<span>再練一次本情境 (Try Again)</span>
+</button>
+</section>
+</main>
+<!-- ================= BOTTOM NAVIGATION BAR (Shared Component Anchor) ================= -->
+<!-- Mapped destination count: 4 | labels: Briefing, Roleplay, Vocab, Debrief | Current active: 'Debrief' -->
+<nav aria-label="Main Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-xs py-space-xs max-w-md mx-auto bg-surface-container-lowest dark:bg-surface-container border-t border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<!-- Tab 1: Briefing (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-container-highest hover:text-on-surface dark:hover:text-on-surface active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">assignment</span>
+<span class="text-label-ui font-label-ui mt-0.5">Briefing</span>
+</a>
+<!-- Tab 2: Roleplay (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-container-highest hover:text-on-surface dark:hover:text-on-surface active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">record_voice_over</span>
+<span class="text-label-ui font-label-ui mt-0.5">Roleplay</span>
+</a>
+<!-- Tab 3: Vocab (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-container-highest hover:text-on-surface dark:hover:text-on-surface active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">style</span>
+<span class="text-label-ui font-label-ui mt-0.5">Vocab</span>
+</a>
+<!-- Tab 4: Debrief (Active State - Strictly executes style_active_navigation) -->
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed text-on-primary-container dark:text-on-primary-fixed rounded-xl px-space-md py-space-xs active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">fact_check</span>
+<span class="text-label-ui font-label-ui mt-0.5">Debrief</span>
+</a>
+</nav>
+</body></html>

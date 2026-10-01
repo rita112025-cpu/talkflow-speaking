@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTalk - 任務簡報說明 (餐廳流暢點餐)</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#9d4300",
+            "surface-variant": "#dae2fd",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#eaedff",
+            "inverse-on-surface": "#eef0ff",
+            "on-primary-fixed": "#001e2f",
+            "secondary-fixed-dim": "#ffb690",
+            "background": "#FFFBEB",
+            "tertiary-container": "#00b17b",
+            "primary": "#006591",
+            "error-container": "#ffdad6",
+            "outline": "#6e7881",
+            "on-tertiary-fixed": "#002113",
+            "on-surface": "#131b2e",
+            "on-secondary-fixed-variant": "#783200",
+            "primary-fixed": "#c9e6ff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "inverse-primary": "#89ceff",
+            "surface-tint": "#006591",
+            "on-background": "#131b2e",
+            "on-tertiary-container": "#003b26",
+            "on-primary-container": "#003751",
+            "on-secondary-fixed": "#341100",
+            "on-secondary-container": "#5c2400",
+            "surface": "#ffffff",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#bec8d2",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary": "#006c49",
+            "secondary-fixed": "#ffdbca",
+            "primary-fixed-dim": "#89ceff",
+            "primary-container": "#0ea5e9",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#3e4850",
+            "secondary-container": "#fd761a",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#004c6e",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#6ffbbe",
+            "inverse-surface": "#283044",
+            "surface-dim": "#d2d9f4",
+            "surface-bright": "#faf8ff",
+            "surface-container-high": "#e2e7ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "gutter-tablet": "1.5rem",
+            "margin-tablet": "2rem",
+            "gutter-desktop": "2rem",
+            "margin-desktop": "3rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["17px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "700" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }]
+          },
+          "boxShadow": {
+            "level1": "0 4px 16px -2px rgba(217, 119, 6, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04)",
+            "level2": "0 10px 25px -4px rgba(217, 119, 6, 0.10), 0 4px 10px -2px rgba(15, 23, 42, 0.05)",
+            "level3": "0 20px 35px -5px rgba(249, 115, 22, 0.28), 0 8px 16px -4px rgba(15, 23, 42, 0.08)"
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 20px;
+      line-height: 1;
+      letter-spacing: normal;
+      text-transform: none;
+      display: inline-block;
+      white-space: nowrap;
+      word-wrap: normal;
+      direction: ltr;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md pb-28 selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top App Bar (Shared Components Standard) -->
+<header class="sticky top-0 z-40 bg-surface shadow-sm">
+<div class="flex justify-between items-center w-full px-margin py-space-sm max-w-screen-md mx-auto">
+<div class="flex items-center gap-space-sm">
+<button aria-label="返回上一頁" class="w-10 h-10 rounded-full flex items-center justify-center text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<div>
+<span class="text-label-sm font-label-sm text-secondary font-bold tracking-wider block">SCENARIO BRIEF</span>
+<h1 class="text-headline-sm font-headline-sm font-bold text-on-surface leading-none">情境任務簡報</h1>
+</div>
+</div>
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-low text-tertiary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">cloud_download</span>
+<span class="text-label-sm font-label-sm">音檔已離線儲存</span>
+</div>
+</div>
+</header>
+<!-- Main Container -->
+<main class="w-full max-w-screen-md mx-auto px-margin pt-space-md flex-1 flex flex-col gap-space-lg">
+<!-- 3-Step Breadcrumb Progress Bar -->
+<section class="bg-surface rounded-3xl p-space-md shadow-level1">
+<div class="flex items-center justify-between relative">
+<div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[3px] bg-slate-200 z-0"></div>
+<!-- Step 1: Active -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center gap-1.5 bg-primary-container text-white px-3 py-1 rounded-full ring-4 ring-primary-container/20 shadow-sm">
+<span class="w-4 h-4 rounded-full bg-white text-primary-container flex items-center justify-center text-[10px] font-bold">1</span>
+<span class="text-label-sm font-label-sm font-bold">任務簡報</span>
+</div>
+</div>
+<!-- Step 2: Pending -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center gap-1.5 bg-surface text-outline border border-outline-variant px-3 py-1 rounded-full">
+<span class="w-4 h-4 rounded-full bg-surface-container-highest text-outline flex items-center justify-center text-[10px] font-bold">2</span>
+<span class="text-label-sm font-label-sm font-medium">AI 實境對話</span>
+</div>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="flex items-center gap-1.5 bg-surface text-outline border border-outline-variant px-3 py-1 rounded-full">
+<span class="w-4 h-4 rounded-full bg-surface-container-highest text-outline flex items-center justify-center text-[10px] font-bold">3</span>
+<span class="text-label-sm font-label-sm font-medium">成效診斷</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Hero Visual Card with Warm Atmosphere -->
+<section class="bg-surface rounded-3xl overflow-hidden shadow-level1 flex flex-col">
+<div class="relative w-full h-48 sm:h-56 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sunlit, cozy Western bistro restaurant in London with warm amber lighting streaming through paned glass windows, dark mahogany wooden tables set with vintage cutlery, exposed warm brick walls, and lush green potted plants creating a welcoming, relaxing travel dining atmosphere with creamy sand tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPQKFXuTBYyr4HFrj0C_IpSzCE-Iu68mP52T32t4rxD7YUbSA5jj33TLpASILCK0SwwMLi3C1VVKbY-Pi0BwjQnktrvCEQ4lSHPzZDJs-qUg1UCpX_3bu3TFzr7hsQmwuCuwvjGyspc_Zm13Sbs-awQoWZjDNyIqNERGDl3OYfIC5GoBDsrcokUCLMLWRVdjW6bZ5gu0zILervVSho2xMHXn2odaEknKy0P64UFhK4Xk39MkUfZ4EY1Q"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-space-md">
+<div class="flex items-center gap-2">
+<span class="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur text-primary text-label-sm font-label-sm font-bold shadow-sm">
+              倫敦柯芬園 • Covent Garden Bistro
+            </span>
+<span class="px-2.5 py-1 rounded-full bg-secondary-container/90 text-white text-label-sm font-label-sm font-bold">
+              高頻率情境
+            </span>
+</div>
+</div>
+</div>
+<!-- Mission Briefing Content -->
+<div class="p-space-lg flex flex-col gap-space-md">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="text-label-lg font-label-lg text-secondary">餐廳流暢點餐 (Restaurant Ordering)</span>
+</div>
+<h2 class="text-headline-md font-headline-md text-on-surface">倫敦街頭小酒館：自信點餐無障礙</h2>
+</div>
+<!-- Target Goal Box (特色任務盒) -->
+<div class="rounded-2xl p-space-md bg-amber-50 border-2 border-amber-200/80 shadow-sm flex flex-col gap-space-xs">
+<div class="flex items-center gap-1.5 text-secondary font-bold text-label-lg font-label-lg">
+<span class="material-symbols-outlined text-[18px]">flag</span>
+<span>本次出國任務目標</span>
+</div>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed font-medium">
+            🎯 你要向服務生點一份<strong class="text-secondary font-bold">肋眼牛排（五分熟 Medium）</strong>，配菜選<strong class="text-on-surface font-bold">烤薯條</strong>，外加一杯<strong class="text-primary font-bold">冰紅茶去冰</strong>，並禮貌詢問<strong class="text-on-surface font-bold">洗手間位置</strong>。
+          </p>
+</div>
+<!-- Metadata Badges -->
+<div class="grid grid-cols-3 gap-space-sm pt-space-xs">
+<div class="flex flex-col items-center justify-center p-space-sm rounded-xl bg-surface-container-low">
+<span class="text-label-sm font-label-sm text-outline">語言等級</span>
+<span class="text-label-lg font-label-lg text-primary font-bold">CEFR A2-B1</span>
+</div>
+<div class="flex flex-col items-center justify-center p-space-sm rounded-xl bg-surface-container-low">
+<span class="text-label-sm font-label-sm text-outline">預計耗時</span>
+<span class="text-label-lg font-label-lg text-on-surface font-bold">3 分鐘</span>
+</div>
+<div class="flex flex-col items-center justify-center p-space-sm rounded-xl bg-surface-container-low">
+<span class="text-label-sm font-label-sm text-outline">AI 模擬考官</span>
+<span class="text-label-lg font-label-lg text-secondary font-bold">店員 Liam</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Key Phrases Cheat Sheet (出國必備小抄) -->
+<section class="bg-surface rounded-3xl p-space-lg shadow-level1 flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">出國必備小抄 (Cheat Sheet)</h3>
+</div>
+<span class="text-label-sm font-label-sm text-outline bg-surface-container px-2.5 py-1 rounded-full">預習發音</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Phrase 1 -->
+<div class="p-space-md rounded-2xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm border border-slate-100">
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm bg-primary-fixed text-on-primary-fixed px-1.5 py-0.5 rounded">點主餐</span>
+<p class="text-body-lg font-body-lg font-bold text-on-surface">"Could I get the ribeye steak, medium, please?"</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">我要一份肋眼牛排，五分熟。</p>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<button class="px-2 py-1 rounded-lg text-label-sm font-label-sm bg-white border border-outline-variant text-outline hover:text-primary transition-colors flex items-center gap-1" title="切換慢速" type="button">
+<span class="material-symbols-outlined text-[16px]">speed</span>
+<span>慢速</span>
+</button>
+<button aria-label="聆聽示範" class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+</div>
+<!-- Phrase 2 -->
+<div class="p-space-md rounded-2xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm border border-slate-100">
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm bg-secondary-fixed text-on-secondary-fixed px-1.5 py-0.5 rounded">問配菜</span>
+<p class="text-body-lg font-body-lg font-bold text-on-surface">"Does that come with any sides?"</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">請問配菜有包含什麼嗎？</p>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<button aria-label="聆聽示範" class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+</div>
+<!-- Phrase 3 -->
+<div class="p-space-md rounded-2xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm border border-slate-100">
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm bg-surface-container-highest text-on-surface px-1.5 py-0.5 rounded">點飲品</span>
+<p class="text-body-lg font-body-lg font-bold text-on-surface">"Could I also have an iced black tea with no ice?"</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">可以再來一杯去冰的冰紅茶嗎？</p>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<button aria-label="聆聽示範" class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+</div>
+<!-- Phrase 4 -->
+<div class="p-space-md rounded-2xl bg-surface-container-low/70 hover:bg-surface-container transition-colors flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm border border-slate-100">
+<div class="flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm bg-surface-container-highest text-on-surface px-1.5 py-0.5 rounded">問位置</span>
+<p class="text-body-lg font-body-lg font-bold text-on-surface">"Could you tell me where the restroom is?"</p>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">請問洗手間在哪裡呢？</p>
+</div>
+<div class="flex items-center gap-2 self-end sm:self-center">
+<button aria-label="聆聽示範" class="w-10 h-10 rounded-full bg-primary-container text-white flex items-center justify-center shadow-sm hover:scale-105 active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Traveler Survival Tip (台灣旅客避坑小貼士) -->
+<section class="rounded-3xl p-space-md bg-amber-100/70 border border-amber-300/80 shadow-sm flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-2xl bg-amber-200 text-secondary flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-[24px]">tips_and_updates</span>
+</div>
+<div class="flex-1">
+<h4 class="text-label-lg font-label-lg font-bold text-secondary mb-1">台灣旅客避坑小貼士 (Cultural Pro-Tip)</h4>
+<p class="text-body-sm font-body-sm text-on-surface leading-relaxed">
+          💡 美國與英國牛排熟度：<strong>Rare</strong> (三分)、<strong>Medium Rare</strong> (四分)、<strong>Medium</strong> (五分熟，台灣人最習慣口感)、<strong>Well-done</strong> (全熟)。特別注意：外國菜單沒有「half-done」，千不要說錯囉！
+        </p>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Primary Action Hero -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md py-space-md px-margin border-t border-slate-200/60 shadow-level2">
+<div class="max-w-screen-md mx-auto flex items-center gap-space-md">
+<button aria-label="對話設定" class="w-12 h-12 rounded-2xl bg-surface border border-outline-variant flex items-center justify-center text-on-surface-variant hover:bg-surface-container active:scale-95 transition-transform flex-shrink-0" type="button">
+<span class="material-symbols-outlined">tune</span>
+</button>
+<button class="flex-1 h-14 rounded-2xl bg-gradient-to-r from-secondary-container to-secondary text-white font-headline-sm font-headline-sm font-bold flex items-center justify-center gap-space-sm shadow-level3 hover:opacity-95 active:scale-98 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]">mic</span>
+<span>開始出國 AI 對話 (Start Conversation)</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</body></html>

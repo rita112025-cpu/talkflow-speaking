@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTalk - AI 角色扮演對話</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#9d4300",
+            "surface-variant": "#dae2fd",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#eaedff",
+            "inverse-on-surface": "#eef0ff",
+            "on-primary-fixed": "#001e2f",
+            "secondary-fixed-dim": "#ffb690",
+            "background": "#faf8ff",
+            "tertiary-container": "#00b17b",
+            "primary": "#006591",
+            "error-container": "#ffdad6",
+            "outline": "#6e7881",
+            "on-tertiary-fixed": "#002113",
+            "on-surface": "#131b2e",
+            "on-secondary-fixed-variant": "#783200",
+            "primary-fixed": "#c9e6ff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "inverse-primary": "#89ceff",
+            "surface-tint": "#006591",
+            "on-background": "#131b2e",
+            "on-tertiary-container": "#003b26",
+            "on-primary-container": "#003751",
+            "on-secondary-fixed": "#341100",
+            "on-secondary-container": "#5c2400",
+            "surface": "#faf8ff",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#bec8d2",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary": "#006c49",
+            "secondary-fixed": "#ffdbca",
+            "primary-fixed-dim": "#89ceff",
+            "primary-container": "#0ea5e9",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#3e4850",
+            "secondary-container": "#fd761a",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#004c6e",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#6ffbbe",
+            "inverse-surface": "#283044",
+            "surface-dim": "#d2d9f4",
+            "surface-bright": "#faf8ff",
+            "surface-container-high": "#e2e7ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "gutter-tablet": "1.5rem",
+            "margin-tablet": "2rem",
+            "gutter-desktop": "2rem",
+            "margin-desktop": "3rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "display-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["17px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600"}],
+            "body-md": ["15px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "headline-md": ["22px", {"lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "700"}],
+            "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+            "display-lg-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800"}]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 1;
+      display: inline-block;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+      vertical-align: middle;
+      font-feature-settings: 'liga';
+      -webkit-font-smoothing: antialiased;
+    }
+    
+    /* Tactile warm modernism elevation tokens */
+    .shadow-level-1 {
+      box-shadow: 0 4px 16px -2px rgba(217, 119, 6, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    }
+    .shadow-level-2 {
+      box-shadow: 0 10px 25px -4px rgba(217, 119, 6, 0.10), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+    }
+    .shadow-level-3 {
+      box-shadow: 0 20px 35px -5px rgba(249, 115, 22, 0.28), 0 8px 16px -4px rgba(15, 23, 42, 0.08);
+    }
+
+    @keyframes pulse-ring {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 16px rgba(249, 115, 22, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(249, 115, 22, 0);
+      }
+    }
+    .mic-pulse-animation {
+      animation: pulse-ring 2.4s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    }
+
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .cursor-blink {
+      animation: cursor-blink 1s infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-[#FFFBEB] text-on-surface antialiased min-h-screen flex flex-col font-body-md text-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TOP APP BAR (Shared Components JSON Anchor aligned) -->
+<header class="sticky top-0 z-40 bg-surface dark:bg-inverse-surface shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center w-full px-margin py-space-sm max-w-screen-md mx-auto">
+<!-- Leading Back Action -->
+<button aria-label="返回上一頁" class="p-space-xs rounded-full hover:bg-surface-container dark:hover:bg-inverse-surface active:scale-95 transition-transform duration-150 flex items-center justify-center text-primary dark:text-inverse-primary" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<!-- Center Title & Status Badge -->
+<div class="flex flex-col items-center">
+<div class="flex items-center gap-space-xs">
+<h1 class="text-headline-sm font-headline-sm font-bold text-on-surface dark:text-inverse-on-surface tracking-tight">
+            餐廳實況：小酒館點餐
+          </h1>
+</div>
+<!-- Offline Indicator Badge -->
+<div class="flex items-center gap-1.5 mt-0.5 px-2 py-0.5 rounded-full bg-tertiary-fixed/30 text-tertiary text-[11px] font-label-sm font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary-container animate-pulse"></span>
+<span>離線模式中 🟢 零延遲</span>
+</div>
+</div>
+<!-- Trailing Mode Action -->
+<button aria-label="離線語音包狀態" class="p-space-xs rounded-full hover:bg-surface-container dark:hover:bg-inverse-surface active:scale-95 transition-transform duration-150 flex items-center justify-center text-primary dark:text-inverse-primary" title="離線資源已就緒" type="button">
+<span class="material-symbols-outlined" data-icon="cloud_download" data-weight="fill" style="font-variation-settings: 'FILL' 1;">cloud_download</span>
+</button>
+</div>
+<!-- Stepper Navigation (1 Briefing > 2 Roleplay > 3 Feedback) -->
+<div class="w-full max-w-screen-md mx-auto px-margin pb-3 pt-1">
+<div class="relative flex items-center justify-between">
+<!-- Connecting Line Track -->
+<div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[3px] bg-slate-200 z-0"></div>
+<div class="absolute left-6 w-1/2 top-1/2 -translate-y-1/2 h-[3px] bg-primary-container z-0 transition-all duration-300"></div>
+<!-- Step 1: Completed -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-tertiary-container text-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="text-[11px] font-label-sm text-tertiary mt-1 font-bold">1 任務簡報</span>
+</div>
+<!-- Step 2: Active Roleplay -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-primary-container text-white ring-4 ring-primary-fixed flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="mic">mic</span>
+</div>
+<span class="text-[11px] font-label-sm text-primary font-bold mt-1">2 AI 對話練習</span>
+</div>
+<!-- Step 3: Pending Feedback -->
+<div class="relative z-10 flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-slate-200 text-outline flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="rate_review">rate_review</span>
+</div>
+<span class="text-[11px] font-label-sm text-outline mt-1 font-medium">3 診斷評分</span>
+</div>
+</div>
+</div>
+</header>
+<!-- AI Persona Sub-Bar Banner -->
+<section class="bg-surface-container-lowest/90 backdrop-blur-sm border-b border-amber-900/5 py-2.5 px-margin shadow-sm z-30">
+<div class="max-w-screen-md mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<!-- Avatar: Waiter Liam -->
+<div class="relative">
+<div class="w-10 h-10 rounded-full bg-amber-100 ring-2 ring-amber-300 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="room_service">room_service</span>
+</div>
+<span class="absolute bottom-0 right-0 w-3 h-3 bg-tertiary-container border-2 border-white rounded-full"></span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-body-md font-body-md font-bold text-on-surface">Liam 服務生</h2>
+<span class="text-[11px] font-label-sm px-2 py-0.5 rounded-full bg-amber-500/10 text-amber-800 font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-600 animate-pulse"></span> 即時連線中
+            </span>
+</div>
+<p class="text-body-sm font-body-sm text-outline flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]" data-icon="storefront">storefront</span>
+            The Ivy Cafe, Covent Garden
+          </p>
+</div>
+</div>
+<!-- Quick Action: Acoustic Slow Speed / Mode -->
+<button class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant hover:text-primary text-label-md font-label-md transition-colors" title="調慢 AI 語音語速" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="speed">speed</span>
+<span>1.0x 語速</span>
+</button>
+</div>
+</section>
+<!-- MAIN CHAT STREAM CANVAS -->
+<main class="flex-1 overflow-y-auto px-margin py-space-lg max-w-screen-md mx-auto w-full space-y-5 pb-52">
+<!-- Dialogue 1: Liam (AI Waiter - Left Bubble) -->
+<article class="flex items-start gap-3 max-w-[90%] md:max-w-[80%]">
+<!-- Mini avatar -->
+<div class="w-8 h-8 rounded-full bg-amber-100 flex-shrink-0 flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+</div>
+<div class="flex flex-col items-start space-y-1.5">
+<div class="bg-surface-container-lowest text-on-surface rounded-2xl rounded-tl-sm p-4 shadow-level-1 border border-amber-900/5">
+<!-- Role Label & Audio button -->
+<div class="flex items-center justify-between gap-4 mb-2 pb-1.5 border-b border-slate-100">
+<span class="text-label-sm font-label-sm text-secondary font-bold tracking-wide">LIAM · 服務生</span>
+<button aria-label="播放原音發音" class="inline-flex items-center gap-1 text-primary hover:text-on-primary-container px-2 py-0.5 rounded-md hover:bg-sky-50 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="volume_up">volume_up</span>
+<span class="text-label-sm font-label-sm font-semibold">原音聆聽</span>
+</button>
+</div>
+<!-- English Sentence -->
+<p class="text-body-lg font-body-lg text-slate-900 font-semibold leading-relaxed">
+            “Good evening! Welcome to The Ivy. Table for one? Are you ready to order, or would you like a couple of minutes with the menu?”
+          </p>
+<!-- Traditional Chinese Subtitle -->
+<p class="text-body-sm font-body-sm text-outline mt-2 pt-2 border-t border-slate-100/80 leading-normal">
+            晚安！歡迎光臨，一位嗎？準備好點餐了嗎，還是需要幾分鐘看一下菜單？
+          </p>
+</div>
+<span class="text-[11px] font-label-sm text-outline-variant px-1">19:42 · 倫敦時間</span>
+</div>
+</article>
+<!-- Dialogue 2: User Traveler (Right Sky Blue Bubble) -->
+<article class="flex items-start justify-end gap-3 ml-auto max-w-[90%] md:max-w-[80%]">
+<div class="flex flex-col items-end space-y-1.5">
+<div class="bg-primary-container text-white rounded-2xl rounded-tr-sm p-4 shadow-level-2">
+<!-- Header info inside user bubble -->
+<div class="flex items-center justify-between gap-3 mb-2 pb-1.5 border-b border-white/20">
+<span class="text-label-sm font-label-sm text-white/90 font-bold">你的回答</span>
+<button aria-label="重聽自己的發音錄音" class="text-white/90 hover:text-white flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="replay">replay</span>
+<span class="text-[11px] font-label-sm">回放我的發音</span>
+</button>
+</div>
+<!-- English sentence spoken -->
+<p class="text-body-lg font-body-lg font-bold leading-relaxed text-white">
+            “Hi! I'm ready to order. Could I get the ribeye steak, please?”
+          </p>
+<!-- Subtitle -->
+<p class="text-body-sm font-body-sm text-white/80 mt-2 pt-2 border-t border-white/15">
+            您好！我準備好點餐了，請給我一份肋眼牛排。
+          </p>
+</div>
+<!-- AI Pronunciation & Fluency Feedback Pill -->
+<div class="flex items-center gap-2">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-label-sm font-label-sm shadow-sm">
+<span class="material-symbols-outlined text-[15px] text-emerald-600 font-bold" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span>辨識度 96% · 發音流暢</span>
+</div>
+<span class="text-[11px] font-label-sm text-outline-variant">剛剛</span>
+</div>
+</div>
+<!-- User Avatar -->
+<div class="w-8 h-8 rounded-full bg-sky-200 text-primary flex-shrink-0 flex items-center justify-center font-bold text-label-sm shadow-sm border border-white">
+        YOU
+      </div>
+</article>
+<!-- Dialogue 3: Liam (AI Waiter - Response) -->
+<article class="flex items-start gap-3 max-w-[90%] md:max-w-[80%]">
+<div class="w-8 h-8 rounded-full bg-amber-100 flex-shrink-0 flex items-center justify-center text-secondary shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+</div>
+<div class="flex flex-col items-start space-y-1.5">
+<div class="bg-surface-container-lowest text-on-surface rounded-2xl rounded-tl-sm p-4 shadow-level-1 border border-amber-900/5">
+<!-- Role Label & Audio button -->
+<div class="flex items-center justify-between gap-4 mb-2 pb-1.5 border-b border-slate-100">
+<div class="flex items-center gap-1.5">
+<span class="text-label-sm font-label-sm text-secondary font-bold tracking-wide">LIAM · 服務生</span>
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+</div>
+<button aria-label="播放原音發音" class="inline-flex items-center gap-1 text-primary hover:text-on-primary-container px-2 py-0.5 rounded-md hover:bg-sky-50 transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="volume_up">volume_up</span>
+<span class="text-label-sm font-label-sm font-semibold">原音聆聽</span>
+</button>
+</div>
+<!-- English Sentence -->
+<p class="text-body-lg font-body-lg text-slate-900 font-semibold leading-relaxed">
+            “Excellent choice! And how would you like that cooked — rare, medium, or well done? Any sides with that?”
+          </p>
+<!-- Traditional Chinese Subtitle -->
+<p class="text-body-sm font-body-sm text-outline mt-2 pt-2 border-t border-slate-100/80 leading-normal">
+            絕佳選擇！請問熟度想要幾分熟——三分、五分還是全熟？需要搭配什麼配菜嗎？
+          </p>
+</div>
+<!-- Quick helpful cultural badge -->
+<div class="flex items-center gap-1.5 text-[11px] font-label-sm text-amber-900/80 bg-amber-100/60 px-2.5 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] text-amber-700" data-icon="tips_and_updates">tips_and_updates</span>
+<span>海外點牛排：熟度 Medium 常見推薦，Sides 指附餐（如薯條、烤蔬菜）</span>
+</div>
+</div>
+</article>
+</main>
+<!-- STICKY BOTTOM INTERACTION TRAY (One-Thumb Hot Zone) -->
+<section class="fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-t from-white via-white/95 to-white/0 pt-4 pb-safe pointer-events-none">
+<div class="max-w-screen-md mx-auto px-margin pointer-events-auto flex flex-col items-center">
+<!-- Real-time Speech-to-Text dynamic preview chip -->
+<div class="w-full mb-2.5 flex items-center justify-between gap-2 bg-amber-50/95 border border-amber-200/80 backdrop-blur-md px-3.5 py-2 rounded-xl shadow-level-1">
+<div class="flex items-center gap-2 overflow-hidden">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-container animate-ping flex-shrink-0"></span>
+<p class="text-body-sm font-body-sm text-slate-800 truncate">
+<span class="font-bold text-secondary">即時聽寫：</span>
+            “I would like it medium, and could I get fries...”
+            <span class="inline-block w-1.5 h-4 bg-secondary-container ml-0.5 cursor-blink align-middle"></span>
+</p>
+</div>
+<span class="text-[11px] font-label-sm text-secondary font-bold flex-shrink-0 whitespace-nowrap bg-amber-200/60 px-2 py-0.5 rounded-full">
+          即時語音轉文字中
+        </span>
+</div>
+<!-- English Hint Bubble / Cheat Sheet floating drawer trigger -->
+<div class="w-full mb-3">
+<details class="group bg-surface-container-lowest border border-sky-100 rounded-xl shadow-level-1 overflow-hidden transition-all duration-200">
+<summary class="flex items-center justify-between px-3.5 py-2 cursor-pointer select-none text-primary hover:bg-sky-50/60 transition-colors list-none">
+<div class="flex items-center gap-1.5 font-label-md text-label-md font-bold">
+<span class="material-symbols-outlined text-amber-500 text-[18px]" data-icon="lightbulb" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<span>💡 靈感小抄：點擊查看推薦回覆英文</span>
+</div>
+<span class="material-symbols-outlined text-[18px] text-primary transition-transform duration-200 group-open:rotate-180" data-icon="expand_more">expand_more</span>
+</summary>
+<div class="px-4 py-2.5 bg-sky-50/40 border-t border-sky-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2">
+<div>
+<p class="text-body-md font-body-md font-bold text-on-surface">“Medium, please. With French fries on the side.”</p>
+<p class="text-body-sm font-body-sm text-outline">請給我五分熟，附餐想要薯條。</p>
+</div>
+<button class="inline-flex items-center gap-1 text-primary text-label-sm font-label-sm font-bold bg-white px-3 py-1.5 rounded-lg border border-sky-200 hover:bg-sky-50 active:scale-95 transition-transform" onclick="alert('已複製提示句，請按住麥克風跟著開口唸出！')" type="button">
+<span class="material-symbols-outlined text-[15px]" data-icon="content_copy">content_copy</span>
+<span>帶入朗讀</span>
+</button>
+</div>
+</details>
+</div>
+<!-- Bottom Audio Controls Row -->
+<div class="w-full bg-white/95 backdrop-blur-md rounded-2xl p-2.5 shadow-level-2 border border-slate-100 flex items-center justify-between mb-3">
+<!-- Left: Keyboard Manual Input -->
+<button aria-label="切換鍵盤輸入" class="flex flex-col items-center justify-center w-20 py-1.5 rounded-xl hover:bg-surface-container text-on-surface-variant active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="keyboard">keyboard</span>
+<span class="text-label-sm font-label-sm mt-0.5">鍵盤輸入</span>
+</button>
+<!-- Center: Primary Action Hero (Push-to-Talk Microphone - Coral Orange #F97316, 76px) -->
+<div class="relative -top-5 flex flex-col items-center">
+<button aria-label="按住說話錄音" class="w-[76px] h-[76px] rounded-full bg-[#F97316] text-white flex items-center justify-center shadow-level-3 mic-pulse-animation active:scale-90 transition-transform duration-200 cursor-pointer focus:outline-none focus:ring-4 focus:ring-orange-300" type="button">
+<span class="material-symbols-outlined text-[36px]" data-icon="mic" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<span class="text-[12px] font-label-md font-bold text-secondary mt-1 tracking-tight">按住說話 (Hold)</span>
+</div>
+<!-- Right: Finish & Diagnosis Route -->
+<button class="flex flex-col items-center justify-center w-24 py-1.5 px-1 rounded-xl bg-tertiary/10 hover:bg-tertiary/20 text-tertiary active:scale-95 transition-transform" type="button">
+<div class="flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[20px]" data-icon="fact_check">fact_check</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<span class="text-label-sm font-label-sm font-bold mt-0.5 whitespace-nowrap">結束並看評分</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Interactive Demo Script -->
+<script>
+    // Micro-interactions for practice screen
+    document.addEventListener('DOMContentLoaded', () => {
+      const micBtn = document.querySelector('button[aria-label="按住說話錄音"]');
+      if (micBtn) {
+        micBtn.addEventListener('mousedown', () => {
+          micBtn.classList.add('bg-orange-600', 'scale-95');
+        });
+        micBtn.addEventListener('mouseup', () => {
+          micBtn.classList.remove('bg-orange-600', 'scale-95');
+        });
+      }
+    });
+  </script>
+</body></html>

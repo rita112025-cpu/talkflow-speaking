@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+
+<html lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TravelTalk - 對話成效即時診斷</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans & Noto Sans TC for Traditional Chinese harmony -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#9d4300",
+            "surface-variant": "#dae2fd",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#eaedff",
+            "inverse-on-surface": "#eef0ff",
+            "on-primary-fixed": "#001e2f",
+            "secondary-fixed-dim": "#ffb690",
+            "background": "#FFFBEB",
+            "tertiary-container": "#00b17b",
+            "primary": "#006591",
+            "error-container": "#ffdad6",
+            "outline": "#6e7881",
+            "on-tertiary-fixed": "#002113",
+            "on-surface": "#131b2e",
+            "on-secondary-fixed-variant": "#783200",
+            "primary-fixed": "#c9e6ff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "inverse-primary": "#89ceff",
+            "surface-tint": "#006591",
+            "on-background": "#131b2e",
+            "on-tertiary-container": "#003b26",
+            "on-primary-container": "#003751",
+            "on-secondary-fixed": "#341100",
+            "on-secondary-container": "#5c2400",
+            "surface": "#ffffff",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#bec8d2",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary": "#006c49",
+            "secondary-fixed": "#ffdbca",
+            "primary-fixed-dim": "#89ceff",
+            "primary-container": "#0ea5e9",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#3e4850",
+            "secondary-container": "#fd761a",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#004c6e",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#6ffbbe",
+            "inverse-surface": "#283044",
+            "surface-dim": "#d2d9f4",
+            "surface-bright": "#faf8ff",
+            "surface-container-high": "#e2e7ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "gutter-desktop": "2rem",
+            "margin-desktop": "3rem",
+            "space-xs": "0.25rem",
+            "gutter-tablet": "1.5rem",
+            "margin-tablet": "2rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "display-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "display-lg-mobile": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"]
+          },
+          "fontSize": {
+            "body-lg": ["17px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "500" }],
+            "body-sm": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700" }],
+            "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "700" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "800" }],
+            "display-lg-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "800" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+      background-color: #FFFBEB;
+    }
+    .custom-shadow-card {
+      box-shadow: 0 4px 16px -2px rgba(217, 119, 6, 0.07), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+    }
+    .custom-shadow-elevated {
+      box-shadow: 0 10px 25px -4px rgba(217, 119, 6, 0.12), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+    }
+    .custom-shadow-action {
+      box-shadow: 0 14px 28px -4px rgba(14, 165, 233, 0.3), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+    }
+    .waveform-bar {
+      transition: height 0.2s ease;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col font-body-md select-none">
+<!-- Top App Bar (Semantic Shell from Shared JSON - Navigation suppressed as this is a task-focused review flow) -->
+<header class="w-full bg-surface-container-lowest sticky top-0 z-40 shadow-sm">
+<div class="flex justify-between items-center w-full px-margin py-space-sm max-w-screen-md mx-auto">
+<button aria-label="返回上一頁" class="w-10 h-10 flex items-center justify-center rounded-full text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-on-surface" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="flex flex-col items-center">
+<h1 class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-tight">對話成效即時診斷</h1>
+<span class="text-label-sm font-label-sm text-outline font-semibold tracking-wide">紐約經典牛排館 • 點餐情境</span>
+</div>
+<button aria-label="離線快取完成" class="w-10 h-10 flex items-center justify-center rounded-full text-primary hover:bg-surface-container active:scale-95 transition-transform duration-150 relative" type="button">
+<span class="material-symbols-outlined" data-icon="cloud_download" data-weight="fill" style="font-variation-settings: 'FILL' 1;">cloud_download</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-tertiary-container rounded-full ring-2 ring-surface-container-lowest"></span>
+</button>
+</div>
+<!-- Stepper Navigation (1 任務導讀 > 2 實戰模擬 > 3 成效診斷) -->
+<div class="max-w-screen-md mx-auto px-margin pb-3 pt-1">
+<div class="relative flex items-center justify-between">
+<!-- Connecting Track Line -->
+<div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[3px] bg-outline-variant -z-0"></div>
+<div class="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-[3px] bg-tertiary-container -z-0" style="width: 100%;"></div>
+<!-- Step 1: Completed -->
+<div class="flex flex-col items-center gap-1 z-10 bg-surface-container-lowest px-1">
+<div class="w-7 h-7 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline font-medium">任務導讀</span>
+</div>
+<!-- Step 2: Completed -->
+<div class="flex flex-col items-center gap-1 z-10 bg-surface-container-lowest px-1">
+<div class="w-7 h-7 rounded-full bg-tertiary text-on-tertiary flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="check">check</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline font-medium">實況對話</span>
+</div>
+<!-- Step 3: Active Highlight (Emerald Teal / Sky Blue) -->
+<div class="flex flex-col items-center gap-1 z-10 bg-surface-container-lowest px-1">
+<div class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center ring-4 ring-primary-container/20 shadow-xs">
+<span class="text-label-sm font-label-sm font-bold">3</span>
+</div>
+<span class="text-label-sm font-label-sm font-bold text-primary">成效診斷</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="flex-1 max-w-screen-md w-full mx-auto px-margin pt-space-md pb-32 space-y-space-md">
+<!-- Overall Score Card -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md custom-shadow-card flex flex-col items-center text-center relative overflow-hidden">
+<!-- Ambient Sunlit Glow Accent -->
+<div class="absolute -top-16 -right-16 w-36 h-36 bg-secondary-fixed/50 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Circular Score Gauge -->
+<div class="relative w-36 h-36 flex items-center justify-center my-space-xs">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 120 120">
+<!-- Background Track -->
+<circle cx="60" cy="60" fill="transparent" r="50" stroke="#E2E8F0" stroke-linecap="round" stroke-width="10"></circle>
+<!-- Active Gradient/Emerald Progress Track (86%) -->
+<circle cx="60" cy="60" fill="transparent" r="50" stroke="#00B17B" stroke-dasharray="314.159" stroke-dashoffset="44" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<div class="flex items-baseline">
+<span class="font-display-lg text-display-lg font-extrabold text-on-surface leading-none tracking-tight">86</span>
+<span class="text-headline-sm font-headline-sm font-bold text-on-surface-variant ml-0.5">分</span>
+</div>
+<span class="text-label-sm font-label-sm font-bold text-tertiary mt-1 px-2 py-0.5 bg-tertiary-container/10 rounded-full">
+            Ready to Fly
+          </span>
+</div>
+</div>
+<h2 class="text-headline-md font-headline-md font-bold text-on-surface mt-1">旅程應對自如 (Travel Ready!)</h2>
+<!-- Encouraging Badge -->
+<div class="mt-space-sm bg-amber-50/80 border border-amber-200/80 rounded-lg px-space-md py-2.5 flex items-center gap-2 max-w-lg">
+<span class="text-lg leading-none shrink-0">🎉</span>
+<p class="text-body-sm font-body-sm text-on-surface text-left font-medium">
+<span class="font-bold text-secondary">任務達成！</span> 外國店員能 <span class="font-bold text-tertiary">100% 聽懂</span> 你的牛排熟度與冰茶點單需求。
+        </p>
+</div>
+<!-- Quick Session Stats Pill Row -->
+<div class="grid grid-cols-3 gap-2 w-full mt-space-md pt-space-sm border-t border-slate-100">
+<div class="flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-outline">對話輪次</span>
+<span class="text-body-md font-body-md font-bold text-on-surface mt-0.5">4 回合</span>
+</div>
+<div class="flex flex-col items-center border-x border-slate-100">
+<span class="text-label-sm font-label-sm text-outline">平均語速</span>
+<span class="text-body-md font-body-md font-bold text-on-surface mt-0.5">118 WPM</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="text-label-sm font-label-sm text-outline">關鍵旅行句</span>
+<span class="text-body-md font-body-md font-bold text-tertiary mt-0.5">3 / 3 掌握</span>
+</div>
+</div>
+</section>
+<!-- Three Interactive Breakdown Metric Bars -->
+<section class="space-y-space-xs">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-headline-sm font-headline-sm font-bold text-on-surface">3 維度多角評測</h3>
+<span class="text-label-sm font-label-sm text-outline">點擊指標查看具體句子</span>
+</div>
+<!-- Metric 1: Pronunciation (Pronunciation) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md custom-shadow-card flex flex-col gap-2 hover:bg-slate-50 transition cursor-pointer border-2 border-transparent" role="button" tabindex="0">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="record_voice_over">record_voice_over</span>
+</span>
+<div>
+<span class="text-body-md font-body-md font-bold text-on-surface">發音精準度</span>
+<span class="text-label-sm font-label-sm text-outline ml-1">Pronunciation</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm font-bold text-tertiary bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">良好 (咬字清晰)</span>
+<span class="text-headline-sm font-headline-sm font-bold text-primary">85%</span>
+</div>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-primary-container h-full rounded-full" style="width: 85%;"></div>
+</div>
+</div>
+<!-- Metric 2: Fluency (EXPANDED & SELECTED) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md custom-shadow-elevated border-2 border-secondary-container relative">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]" data-icon="speed">speed</span>
+</span>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="text-body-md font-body-md font-bold text-on-surface">語流連貫度</span>
+<span class="text-label-sm font-label-sm text-outline">Fluency</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm font-bold text-secondary bg-orange-50 px-2 py-0.5 rounded-full border border-orange-200">
+              需補強 (停頓稍長 2 處)
+            </span>
+<span class="text-headline-sm font-headline-sm font-bold text-secondary-container">72%</span>
+</div>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden mt-2">
+<div class="bg-secondary-container h-full rounded-full" style="width: 72%;"></div>
+</div>
+<p class="text-label-sm font-label-sm text-on-surface-variant font-medium mt-1.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="info">info</span>
+          當前聚焦：已展開檢視語流有待補強之關鍵點餐長句
+        </p>
+</div>
+<!-- Metric 3: Vocabulary (Vocabulary) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-md custom-shadow-card flex flex-col gap-2 hover:bg-slate-50 transition cursor-pointer border-2 border-transparent" role="button" tabindex="0">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[20px]" data-icon="translate">translate</span>
+</span>
+<div>
+<span class="text-body-md font-body-md font-bold text-on-surface">出國實用詞彙</span>
+<span class="text-label-sm font-label-sm text-outline ml-1">Vocabulary</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm font-bold text-tertiary bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-100">優秀 (道地用語)</span>
+<span class="text-headline-sm font-headline-sm font-bold text-tertiary">90%</span>
+</div>
+</div>
+<div class="w-full bg-slate-100 h-2.5 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 90%;"></div>
+</div>
+</div>
+</section>
+<!-- Detailed Sentence Inspection Panel (for the active Fluency metric) -->
+<section class="bg-surface-container-lowest rounded-xl p-space-md custom-shadow-card space-y-space-md border border-slate-100">
+<!-- Panel Header -->
+<div class="flex items-center justify-between pb-space-sm border-b border-slate-100">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 bg-orange-100 text-secondary text-label-sm font-label-sm font-bold rounded">
+            精準診斷句 #02
+          </span>
+<span class="text-label-md font-label-md text-on-surface-variant font-medium">牛排熟度與加點飲料</span>
+</div>
+<span class="text-label-sm font-label-sm text-outline flex items-center gap-0.5">
+<span class="material-symbols-outlined text-[15px]" data-icon="timer">timer</span> 0:04 錄音
+        </span>
+</div>
+<!-- Target Sentence Display with Highlighted Pause Segment -->
+<div class="bg-surface-container-low/70 rounded-lg p-space-md border border-surface-container">
+<p class="text-headline-sm font-headline-sm font-bold text-on-surface leading-relaxed">
+          “I'd like it <span class="text-secondary bg-orange-100/80 px-1 py-0.5 rounded border-b-2 border-secondary-container">medium,</span> <span class="inline-flex items-center gap-0.5 bg-red-100 text-error px-1.5 py-0.2 rounded text-label-sm font-bold mx-0.5"><span class="w-1.5 h-1.5 rounded-full bg-error animate-ping"></span>停頓 1.8s</span> and could I have an iced black tea with no ice?”
+        </p>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-2 font-medium">
+          中文語意：「我想要五分熟，另外可以給我一杯去冰紅茶嗎？」
+        </p>
+</div>
+<!-- Audio Waveform Comparison Bar -->
+<div class="space-y-space-sm">
+<h4 class="text-label-lg font-label-lg font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="graphic_eq">graphic_eq</span>
+          語流波形對照 (Pronunciation &amp; Rhythm Flow)
+        </h4>
+<!-- 1. User Recording Waveform -->
+<div class="bg-amber-50/50 rounded-lg p-space-sm border border-amber-100 flex items-center gap-3">
+<button aria-label="播放你的錄音" class="w-9 h-9 shrink-0 rounded-full bg-secondary-container text-on-secondary flex items-center justify-center shadow-xs active:scale-95 transition" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-label-sm font-bold text-on-surface">你的錄音</span>
+<span class="text-label-sm font-label-sm text-secondary font-mono font-semibold">0:04</span>
+</div>
+<!-- Waveform bars simulated with CSS flex + red dot on hesitation -->
+<div class="h-8 flex items-center gap-[3px] w-full px-1 bg-white/80 rounded border border-amber-200/50 relative overflow-hidden">
+<!-- medium... -->
+<div class="waveform-bar w-1 bg-secondary rounded-full h-3"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-5"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-4"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-6"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-3"></div>
+<!-- Hesitation Zone (Red dot + flatline) -->
+<div class="flex items-center justify-center px-1.5 bg-red-50 border border-red-200 rounded h-6 relative mx-1">
+<span class="w-2 h-2 rounded-full bg-error mr-1"></span>
+<span class="text-[9px] font-bold text-error whitespace-nowrap">停頓 1.8s</span>
+</div>
+<!-- ...and could I have... -->
+<div class="waveform-bar w-1 bg-secondary rounded-full h-4"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-5"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-3"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-6"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-5"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-4"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-6"></div>
+<div class="waveform-bar w-1 bg-secondary rounded-full h-2"></div>
+</div>
+</div>
+</div>
+<!-- 2. Native Speaker Waveform -->
+<div class="bg-surface-container-low/50 rounded-lg p-space-sm border border-slate-100 flex items-center gap-3">
+<button aria-label="播放外師示範" class="w-9 h-9 shrink-0 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-xs active:scale-95 transition" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="play_arrow" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</button>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-1">
+<span class="text-label-sm font-label-sm font-bold text-on-surface">外師示範 (紐約母語者)</span>
+<span class="text-label-sm font-label-sm text-primary font-mono font-semibold">0:03</span>
+</div>
+<!-- Continuous Smooth Waveform -->
+<div class="h-8 flex items-center gap-[3px] w-full px-1 bg-white/80 rounded border border-slate-200 relative">
+<div class="waveform-bar w-1 bg-primary rounded-full h-3"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-5"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-6"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-7"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-6"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-5"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-6"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-7"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-8"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-6"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-5"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-4"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-5"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-3"></div>
+<div class="waveform-bar w-1 bg-primary rounded-full h-2"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Coach Advice (Traditional Chinese) -->
+<div class="bg-blue-50/70 border border-blue-200/70 rounded-xl p-space-md relative overflow-hidden">
+<div class="flex items-start gap-2.5">
+<span class="w-7 h-7 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[17px]" data-icon="lightbulb" data-weight="fill" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+</span>
+<div class="space-y-1">
+<h5 class="text-label-lg font-label-lg font-bold text-on-primary-container">口說教練提點</h5>
+<p class="text-body-md font-body-md text-on-surface leading-relaxed">
+              在點餐時，連詞 <strong class="text-primary font-bold">and</strong> 可以輕讀帶過，避免在 <span class="bg-white/80 px-1 py-0.5 rounded border border-blue-100 font-semibold text-secondary">medium</span> 後停頓過久。試試一口氣講完：「<span class="text-primary font-bold">medium with an iced tea</span>」，自然度立即加倍！
+            </p>
+</div>
+</div>
+</div>
+<!-- Practice Again Button for this single sentence -->
+<div class="pt-space-xs">
+<button class="w-full py-2.5 px-space-md rounded-lg bg-surface-container hover:bg-surface-container-highest text-primary font-label-lg font-bold flex items-center justify-center gap-2 border border-slate-200/80 active:scale-[0.99] transition duration-150 shadow-xs" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+          🔄 單句再練一次 (無壓力單獨錄音)
+        </button>
+</div>
+</section>
+</main>
+<!-- Bottom Sticky Action Bar (Task/Flow Ending Action) -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface-container-lowest/95 backdrop-blur-md z-50 border-t border-slate-100">
+<div class="max-w-screen-md mx-auto px-margin py-3 flex items-center gap-3">
+<!-- Save to Phrasebook Button -->
+<button class="flex-1 py-3 px-space-md rounded-xl bg-surface border border-slate-300 hover:bg-slate-50 text-on-surface font-label-lg font-bold flex items-center justify-center gap-1.5 active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px] text-amber-500" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="truncate">一鍵加入常用金句庫</span>
+</button>
+<!-- Complete & Next Step Button -->
+<button class="flex-[1.4] py-3 px-space-md rounded-xl bg-primary-container text-on-primary font-label-lg font-bold flex items-center justify-center gap-1.5 custom-shadow-action hover:brightness-105 active:scale-95 transition-all duration-150" type="button">
+<span>完成本次特訓 (進入下一關)</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+</body></html>

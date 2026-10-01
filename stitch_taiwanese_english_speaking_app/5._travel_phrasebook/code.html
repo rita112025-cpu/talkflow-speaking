@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>出國隨身金句庫 - TravelTalk</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary": "#9d4300",
+            "surface-variant": "#dae2fd",
+            "surface-container-lowest": "#ffffff",
+            "surface-container": "#eaedff",
+            "inverse-on-surface": "#eef0ff",
+            "on-primary-fixed": "#001e2f",
+            "secondary-fixed-dim": "#ffb690",
+            "background": "#FFFBEB",
+            "tertiary-container": "#00b17b",
+            "primary": "#006591",
+            "error-container": "#ffdad6",
+            "outline": "#6e7881",
+            "on-tertiary-fixed": "#002113",
+            "on-surface": "#131b2e",
+            "on-secondary-fixed-variant": "#783200",
+            "primary-fixed": "#c9e6ff",
+            "surface-container-highest": "#dae2fd",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-error-container": "#93000a",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f2f3ff",
+            "inverse-primary": "#89ceff",
+            "surface-tint": "#006591",
+            "on-background": "#131b2e",
+            "on-tertiary-container": "#003b26",
+            "on-primary-container": "#003751",
+            "on-secondary-fixed": "#341100",
+            "on-secondary-container": "#5c2400",
+            "surface": "#ffffff",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#bec8d2",
+            "on-tertiary-fixed-variant": "#005236",
+            "tertiary": "#006c49",
+            "secondary-fixed": "#ffdbca",
+            "primary-fixed-dim": "#89ceff",
+            "primary-container": "#0EA5E9",
+            "error": "#ba1a1a",
+            "on-surface-variant": "#3e4850",
+            "secondary-container": "#F97316",
+            "on-error": "#ffffff",
+            "on-primary-fixed-variant": "#004c6e",
+            "on-primary": "#ffffff",
+            "tertiary-fixed": "#6ffbbe",
+            "inverse-surface": "#283044",
+            "surface-dim": "#d2d9f4",
+            "surface-bright": "#faf8ff",
+            "surface-container-high": "#e2e7ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "margin": "1.25rem",
+            "gutter": "1rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "label-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "label-sm": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "headline-sm": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"],
+            "display-lg": ["Plus Jakarta Sans", "Noto Sans TC", "sans-serif"]
+          },
+          "fontSize": {
+            "body-lg": ["17px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "500"}],
+            "body-md": ["15px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+            "label-lg": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "700"}],
+            "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+            "headline-md": ["22px", {"lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "600"}]
+          },
+          "boxShadow": {
+            "level-1": "0 4px 16px -2px rgba(217, 119, 6, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04)",
+            "level-2": "0 10px 25px -4px rgba(217, 119, 6, 0.10), 0 4px 10px -2px rgba(15, 23, 42, 0.05)",
+            "level-3": "0 20px 35px -5px rgba(249, 115, 22, 0.28), 0 8px 16px -4px rgba(15, 23, 42, 0.08)"
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased min-h-screen pb-32">
+<!-- Top App Bar (Shared Component Anchor) -->
+<header class="sticky top-0 z-40 bg-surface shadow-sm transition-all duration-200">
+<div class="flex justify-between items-center w-full px-margin py-space-sm max-w-screen-md mx-auto">
+<div class="flex items-center gap-space-sm">
+<button aria-label="返回上一頁" class="w-10 h-10 rounded-full flex items-center justify-center text-on-surface hover:bg-surface-container active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<div>
+<h1 class="text-headline-sm font-headline-sm font-bold text-on-surface leading-tight">出國隨身金句庫</h1>
+<span class="text-label-sm font-label-sm text-outline tracking-wider">Travel Phrasebook</span>
+</div>
+</div>
+<!-- Offline Download Badge & Control -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-[#ECFDF5] border border-[#A7F3D0] rounded-full active:scale-95 transition-transform duration-150" title="點擊切換離線同步設置">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-label-sm font-label-sm text-emerald-800 font-bold">18MB 已完成</span>
+<span class="material-symbols-outlined text-emerald-600 text-base" data-icon="cloud_download">cloud_download</span>
+</button>
+</div>
+</header>
+<!-- Main Container -->
+<main class="max-w-screen-md mx-auto px-margin pt-space-md space-y-space-md">
+<!-- Search Section -->
+<div class="relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-outline">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</div>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-lowest border border-outline-variant/60 rounded-2xl text-body-md font-body-md text-on-surface placeholder:text-outline focus:outline-none focus:ring-2 focus:ring-primary-container shadow-level-1 transition duration-150" placeholder="搜尋情境金句或單字（如：換尺寸、過敏、行李）" type="search"/>
+</div>
+<!-- Scenario Horizontal Tabs -->
+<div class="overflow-x-auto no-scrollbar -mx-margin px-margin py-1 flex items-center gap-2">
+<!-- Tab 1 -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-label-md font-label-md bg-surface border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+        全部金句 (All)
+      </button>
+<!-- Tab 2: Dining (ACTIVE) -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-label-md font-label-md bg-primary-container text-on-primary font-bold shadow-md shadow-primary-container/20 active:scale-95 transition flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm fill" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+        餐廳點餐 (Dining)
+      </button>
+<!-- Tab 3 -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-label-md font-label-md bg-surface border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+        機場航廈 (Airport)
+      </button>
+<!-- Tab 4 -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-label-md font-label-md bg-surface border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+        飯店住宿 (Hotel)
+      </button>
+<!-- Tab 5 -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-label-md font-label-md bg-surface border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+        交通問路 (Directions)
+      </button>
+<!-- Tab 6 -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-label-md font-label-md bg-surface border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+        購物退稅 (Shopping)
+      </button>
+<!-- Tab 7 -->
+<button class="whitespace-nowrap px-4 py-2 rounded-full text-label-md font-label-md bg-surface border border-outline-variant/40 text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+        緊急求助 (Emergency)
+      </button>
+</div>
+<!-- Feature Controls Bar (Global Toggles) -->
+<div class="flex items-center justify-between bg-surface/90 backdrop-blur-sm px-4 py-2.5 rounded-xl border border-outline-variant/30 shadow-level-1">
+<!-- 0.8x Global Switch -->
+<label class="flex items-center gap-2.5 cursor-pointer select-none">
+<div class="relative">
+<input checked="" class="sr-only peer" id="global-speed-toggle" type="checkbox"/>
+<div class="w-9 h-5 bg-outline-variant/70 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary-container"></div>
+</div>
+<span class="text-label-md font-label-md text-on-surface font-semibold flex items-center gap-1">
+          全部慢速播放
+          <span class="text-secondary font-bold text-xs bg-secondary-fixed px-1.5 py-0.5 rounded">0.8x</span>
+</span>
+</label>
+<!-- Auto Loop Play Button -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-primary hover:bg-primary-fixed/20 active:scale-95 transition text-label-md font-label-md">
+<span class="material-symbols-outlined text-base" data-icon="repeat">repeat</span>
+<span>自動循環播放</span>
+</button>
+</div>
+<!-- Phrase Cards List -->
+<div class="space-y-4 pt-1">
+<!-- Phrase Card 1 -->
+<article class="bg-surface rounded-2xl p-5 shadow-level-1 border border-amber-900/5 relative transition duration-150 hover:shadow-level-2">
+<div class="flex justify-between items-start gap-3">
+<div class="space-y-1 flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-primary-container/10 text-primary font-bold">精選常用</span>
+<span class="text-label-sm font-label-sm text-outline">/kʊd aɪ hæv ðə tʃɛk pliːz/</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm font-bold text-on-surface pt-1 leading-snug">
+              "Could I have the check, please? Can we split the bill?"
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant font-medium">
+              可以給我帳單嗎？我們可以分開結帳嗎？
+            </p>
+</div>
+<!-- Star Action -->
+<button aria-label="收藏金句" class="text-amber-500 hover:scale-110 active:scale-90 transition p-1" title="已加入重點練習清單">
+<span class="material-symbols-outlined fill text-2xl text-amber-400" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<!-- Audio & Waveform Controls -->
+<div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<!-- Audio Play Button -->
+<button class="h-10 px-4 rounded-full bg-secondary-container text-on-secondary flex items-center gap-2 shadow-level-2 hover:opacity-95 active:scale-95 transition duration-150">
+<span class="material-symbols-outlined text-xl" data-icon="volume_up">volume_up</span>
+<!-- Mini Soundwave -->
+<div class="flex items-center gap-0.5 h-4">
+<span class="w-1 bg-white rounded-full h-2 animate-pulse"></span>
+<span class="w-1 bg-white rounded-full h-4"></span>
+<span class="w-1 bg-white rounded-full h-3 animate-pulse"></span>
+<span class="w-1 bg-white rounded-full h-1.5"></span>
+</div>
+<span class="text-label-md font-label-md ml-0.5">播放原音</span>
+</button>
+<!-- 0.75x slow toggle -->
+<button class="px-2.5 py-1.5 rounded-full border border-outline-variant/60 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+              0.75x 慢速
+            </button>
+</div>
+<span class="text-label-sm font-label-sm text-outline">英式/美式差異</span>
+</div>
+<!-- Culture Tag / Tip -->
+<div class="mt-3 bg-[#FFF7ED] border border-[#FFEDD5] rounded-xl px-3 py-2 text-label-md font-label-md text-secondary-container flex items-start gap-2">
+<span class="text-base select-none">💡</span>
+<span class="text-[#9A3412]">🇬🇧 英國用法：the bill；🇺🇸 美國用法：the check</span>
+</div>
+</article>
+<!-- Phrase Card 2 (Caution Allergy) -->
+<article class="bg-surface rounded-2xl p-5 shadow-level-1 border border-amber-900/5 relative transition duration-150 hover:shadow-level-2">
+<div class="flex justify-between items-start gap-3">
+<div class="space-y-1 flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm px-2.5 py-0.5 rounded-full bg-red-100 text-red-700 font-bold flex items-center gap-1">
+<span>⚠️</span> 飲食過敏必備救命句
+              </span>
+</div>
+<h2 class="text-headline-sm font-headline-sm font-bold text-on-surface pt-1 leading-snug">
+              "I'm allergic to peanuts. Does this dish contain any nuts?"
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant font-medium">
+              我對花生過敏。這道菜裡面有任何堅果嗎？
+            </p>
+</div>
+<!-- Star Action (Starred) -->
+<button aria-label="收藏金句" class="text-amber-500 hover:scale-110 active:scale-90 transition p-1" title="已加入重點練習清單">
+<span class="material-symbols-outlined fill text-2xl text-amber-400" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+<!-- Audio & Waveform Controls -->
+<div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 rounded-full bg-secondary-container text-on-secondary flex items-center gap-2 shadow-level-2 hover:opacity-95 active:scale-95 transition duration-150">
+<span class="material-symbols-outlined text-xl" data-icon="volume_up">volume_up</span>
+<div class="flex items-center gap-0.5 h-4">
+<span class="w-1 bg-white rounded-full h-3"></span>
+<span class="w-1 bg-white rounded-full h-1.5"></span>
+<span class="w-1 bg-white rounded-full h-4 animate-pulse"></span>
+<span class="w-1 bg-white rounded-full h-2"></span>
+</div>
+<span class="text-label-md font-label-md ml-0.5">播放原音</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-full bg-secondary-fixed text-on-secondary-fixed border border-secondary-fixed text-label-sm font-label-sm active:scale-95 transition font-bold">
+              0.75x 慢速
+            </button>
+</div>
+<span class="text-label-sm font-label-sm text-red-600 font-semibold">餐飲安全聲明</span>
+</div>
+</article>
+<!-- Phrase Card 3 -->
+<article class="bg-surface rounded-2xl p-5 shadow-level-1 border border-amber-900/5 relative transition duration-150 hover:shadow-level-2">
+<div class="flex justify-between items-start gap-3">
+<div class="space-y-1 flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-primary-container/10 text-primary font-bold">餐桌基本</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm font-bold text-on-surface pt-1 leading-snug">
+              "Excuse me, could we get some tap water for the table?"
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant font-medium">
+              不好意思，可以給我們這桌一些常溫自來水/飲用水嗎？
+            </p>
+</div>
+<!-- Star Action -->
+<button aria-label="收藏金句" class="text-outline-variant hover:text-amber-400 hover:scale-110 active:scale-90 transition p-1" title="加入重點清單">
+<span class="material-symbols-outlined text-2xl" data-icon="star">star</span>
+</button>
+</div>
+<!-- Audio & Waveform Controls -->
+<div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 rounded-full bg-secondary-container text-on-secondary flex items-center gap-2 shadow-level-2 hover:opacity-95 active:scale-95 transition duration-150">
+<span class="material-symbols-outlined text-xl" data-icon="volume_up">volume_up</span>
+<div class="flex items-center gap-0.5 h-4">
+<span class="w-1 bg-white rounded-full h-2"></span>
+<span class="w-1 bg-white rounded-full h-3"></span>
+<span class="w-1 bg-white rounded-full h-1.5"></span>
+<span class="w-1 bg-white rounded-full h-3"></span>
+</div>
+<span class="text-label-md font-label-md ml-0.5">播放原音</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-full border border-outline-variant/60 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+              0.75x 慢速
+            </button>
+</div>
+</div>
+<!-- Culture Tag / Tip -->
+<div class="mt-3 bg-[#F0F9FF] border border-[#BAE6FD] rounded-xl px-3 py-2 text-label-md font-label-md text-primary flex items-start gap-2">
+<span class="text-base select-none">💡</span>
+<span class="text-[#0369A1]">tap water 通常是免費自來水，sparkling / still water 需額外收費</span>
+</div>
+</article>
+<!-- Phrase Card 4 -->
+<article class="bg-surface rounded-2xl p-5 shadow-level-1 border border-amber-900/5 relative transition duration-150 hover:shadow-level-2">
+<div class="flex justify-between items-start gap-3">
+<div class="space-y-1 flex-1">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 font-bold">讚美禮儀</span>
+</div>
+<h2 class="text-headline-sm font-headline-sm font-bold text-on-surface pt-1 leading-snug">
+              "Everything was delicious, compliments to the chef!"
+            </h2>
+<p class="text-body-md font-body-md text-on-surface-variant font-medium">
+              每道菜都非常美味，請替我們向主廚致敬！
+            </p>
+</div>
+<!-- Star Action -->
+<button aria-label="收藏金句" class="text-outline-variant hover:text-amber-400 hover:scale-110 active:scale-90 transition p-1" title="加入重點清單">
+<span class="material-symbols-outlined text-2xl" data-icon="star">star</span>
+</button>
+</div>
+<!-- Audio & Waveform Controls -->
+<div class="mt-4 pt-3.5 border-t border-slate-100 flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 rounded-full bg-secondary-container text-on-secondary flex items-center gap-2 shadow-level-2 hover:opacity-95 active:scale-95 transition duration-150">
+<span class="material-symbols-outlined text-xl" data-icon="volume_up">volume_up</span>
+<div class="flex items-center gap-0.5 h-4">
+<span class="w-1 bg-white rounded-full h-2"></span>
+<span class="w-1 bg-white rounded-full h-4"></span>
+<span class="w-1 bg-white rounded-full h-2"></span>
+<span class="w-1 bg-white rounded-full h-3"></span>
+</div>
+<span class="text-label-md font-label-md ml-0.5">播放原音</span>
+</button>
+<button class="px-2.5 py-1.5 rounded-full border border-outline-variant/60 text-label-sm font-label-sm text-on-surface-variant hover:bg-surface-container active:scale-95 transition">
+              0.75x 慢速
+            </button>
+</div>
+<span class="text-label-sm font-label-sm text-emerald-700 font-semibold">餐後高情商回饋</span>
+</div>
+</article>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Shared Component Anchor) -->
+<!-- Active state: "複習筆記" strictly matched according to Phrasebook & Notes Context -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-gutter py-space-xs pb-safe bg-surface-container-lowest shadow-lg">
+<!-- Item 1: 情境探索 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="explore">explore</span>
+<span class="text-label-sm font-label-sm mt-0.5">情境探索</span>
+</a>
+<!-- Item 2: AI 對話 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="mic">mic</span>
+<span class="text-label-sm font-label-sm mt-0.5">AI 對話</span>
+</a>
+<!-- Item 3: 複習筆記 (ACTIVE) -->
+<a class="flex flex-col items-center justify-center bg-secondary-fixed text-on-secondary-fixed rounded-full px-space-md py-space-xs active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl fill" data-icon="menu_book" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="text-label-sm font-label-sm font-bold mt-0.5">複習筆記</span>
+</a>
+<!-- Item 4: 個人檔案 -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container active:scale-90 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="text-label-sm font-label-sm mt-0.5">個人檔案</span>
+</a>
+</nav>
+<!-- Interactive Audio Feedback Micro-interactions -->
+<script>
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        if(this.textContent.includes('慢速') && !this.closest('label')) {
+          this.classList.toggle('bg-secondary-fixed');
+          this.classList.toggle('text-on-secondary-fixed');
+          this.classList.toggle('font-bold');
+        }
+      });
+    });
+  </script>
+</body></html>

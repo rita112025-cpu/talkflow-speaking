@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalkFlow 口說潮 - 英語流暢練習</title>
+<!-- Google Fonts: Plus Jakarta Sans & Inter -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Google Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#862200",
+            "inverse-on-surface": "#293040",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#6bff8f",
+            "surface-tint": "#c3c0ff",
+            "on-error": "#690005",
+            "surface-bright": "#323949",
+            "outline": "#918fa1",
+            "surface-container-highest": "#2e3545",
+            "on-surface": "#dce2f7",
+            "on-secondary-fixed-variant": "#005321",
+            "background": "#0c1322",
+            "error": "#ffb4ab",
+            "on-secondary-container": "#004119",
+            "on-surface-variant": "#c7c4d8",
+            "primary": "#c3c0ff",
+            "on-primary-container": "#dad7ff",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-tertiary-container": "#ffd1c5",
+            "surface-dim": "#0c1322",
+            "surface-container-lowest": "#070e1d",
+            "outline-variant": "#464555",
+            "tertiary-fixed": "#ffdbd1",
+            "on-secondary-fixed": "#002109",
+            "surface-container-low": "#141b2b",
+            "inverse-surface": "#dce2f7",
+            "tertiary": "#ffb5a0",
+            "on-secondary": "#003915",
+            "on-background": "#dce2f7",
+            "inverse-primary": "#4d44e3",
+            "on-primary": "#1d00a5",
+            "secondary": "#4ae176",
+            "primary-container": "#4f46e5",
+            "on-tertiary-fixed": "#3b0900",
+            "tertiary-fixed-dim": "#ffb5a0",
+            "surface-container-high": "#232a3a",
+            "error-container": "#93000a",
+            "on-tertiary": "#5f1500",
+            "secondary-container": "#00b954",
+            "surface-variant": "#2e3545",
+            "secondary-fixed-dim": "#4ae176",
+            "surface-container": "#191f2f",
+            "on-primary-fixed": "#0f0069",
+            "primary-fixed": "#e2dfff",
+            "surface": "#0c1322",
+            "on-primary-fixed-variant": "#3323cc",
+            "tertiary-container": "#b33000"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Inter"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-md": ["Inter"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-xl": ["Inter"],
+            "phonetic-display": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "body-xl": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "phonetic-display": ["22px", { "lineHeight": "30px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined[data-weight="fill"] {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen selection:bg-primary-container selection:text-white flex flex-col justify-start items-center">
+<!-- Mobile Screen Constraints (Max 480px) -->
+<div class="w-full max-w-[480px] min-h-screen flex flex-col relative pb-28">
+<!-- TopAppBar Component (from Shared Components JSON) -->
+<header class="bg-surface-dim dark:bg-surface-dim border-b border-outline-variant/20 dark:border-outline-variant/20 sticky top-0 z-40 backdrop-blur-md bg-opacity-90">
+<div class="flex justify-between items-center w-full px-margin max-w-[480px] mx-auto py-space-sm h-16">
+<!-- Leading: Avatar + App Identity -->
+<div class="flex items-center gap-space-sm">
+<div class="relative w-10 h-10 rounded-full p-[2px] bg-gradient-to-tr from-primary-container to-secondary">
+<img alt="User profile portrait avatar badge" class="w-full h-full rounded-full object-cover border-2 border-surface-container-lowest" data-alt="A stylish modern 3D avatar portrait of a Taiwanese learner with minimalist dark aesthetic, ambient violet studio illumination, smooth rendering, wearing discreet wireless earbuds against a deep obsidian backdrop." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwnAlgK2Gz4-RAmR05zHsPjnviQa1V07AgCZyPPrZge-5ECc6FKb3tdimyNgXvj1dBykoNNOi8GfkpxCdcZ7wmLgIjza4Cj-vAx6wamrAYyzY9IbrZEWHdIDkfHRhKb7K87m_jNuz3R-wyA3kDj3igsa_n8kd9-SnnxEXo09aOgHlhymIBBlAE5f8HvHcoB7B4Cv4WacoIH-RhEAFwLsu876w2FCQijPjI-8WBbHC3Ig-XuigYIrJPRg"/>
+<div class="absolute bottom-0 right-0 w-3 h-3 bg-secondary rounded-full border-2 border-surface-container-lowest"></div>
+</div>
+<div>
+<h1 class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary leading-tight">TalkFlow 口說潮</h1>
+<p class="text-label-sm font-label-sm text-outline">今天也要開口說</p>
+</div>
+</div>
+<!-- Trailing: Streak Flame & Energy Badges -->
+<div class="flex items-center gap-space-xs">
+<!-- Streak Badge -->
+<div class="flex items-center gap-1 bg-surface-container-high px-space-sm py-1 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="local_fire_department" data-weight="fill">local_fire_department</span>
+<span class="text-label-md font-label-md text-tertiary font-bold tracking-tight">14 天連續</span>
+</div>
+<!-- Gem / Tokens Counter -->
+<div class="flex items-center gap-1 bg-surface-container-high px-space-sm py-1 rounded-full border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary text-[18px]" data-icon="diamond" data-weight="fill">diamond</span>
+<span class="text-label-md font-label-md text-secondary font-bold">480</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Stream -->
+<main class="flex-1 px-margin space-y-space-lg pt-space-md">
+<!-- HERO SECTION: CEFR Fluency Meter & Daily Goal Progress -->
+<section class="bg-surface-container rounded-lg p-space-lg relative overflow-hidden border border-outline-variant/20 shadow-xl">
+<!-- Ambient Radial Glow Accent -->
+<div class="absolute -top-16 -right-16 w-44 h-44 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute -bottom-10 -left-10 w-36 h-36 bg-secondary/15 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-md relative z-10">
+<div>
+<span class="text-label-sm font-label-sm uppercase tracking-wider text-outline px-2 py-0.5 rounded bg-surface-container-highest inline-block mb-1">即時口說評測</span>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">CEFR 英語流暢度</h2>
+</div>
+<span class="text-label-md font-label-md text-secondary bg-surface-container-high px-space-sm py-1 rounded-full border border-secondary/30 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-secondary animate-ping"></span> 穩定成長
+          </span>
+</div>
+<div class="flex items-center gap-space-lg relative z-10">
+<!-- Concentric Animated SVG Circular Meter -->
+<div class="relative w-28 h-28 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90 transform" viewbox="0 0 100 100">
+<!-- Background Track -->
+<circle class="text-surface-container-highest fill-none" cx="50" cy="50" r="40" stroke="currentColor" stroke-width="7"></circle>
+<!-- Outer Progress Ring (B2 Fluency - 78%) -->
+<circle class="text-primary-container fill-none drop-shadow-[0_0_8px_rgba(79,70,229,0.7)]" cx="50" cy="50" r="40" stroke="currentColor" stroke-dasharray="251.2" stroke-dashoffset="55" stroke-linecap="round" stroke-width="7"></circle>
+<!-- Inner Goal Arc (Daily - 80%) -->
+<circle class="text-secondary fill-none" cx="50" cy="50" r="30" stroke="currentColor" stroke-dasharray="188.4" stroke-dashoffset="37" stroke-linecap="round" stroke-width="4"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center text-center">
+<span class="text-headline-md font-headline-md text-on-surface font-extrabold">B2</span>
+<span class="text-label-sm font-label-sm text-outline">中高級</span>
+</div>
+</div>
+<!-- Level Information & Next Milestone -->
+<div class="flex-1 space-y-space-xs">
+<div class="flex items-baseline gap-space-xs">
+<span class="text-body-xl font-body-xl text-primary font-bold">中高級流暢度</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant leading-tight">
+              自然對答如流，語音清晰度達 88%
+            </p>
+<div class="pt-1 flex items-center gap-1 text-label-md font-label-md text-tertiary">
+<span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+<span>距離 C1 還差 320 分</span>
+</div>
+</div>
+</div>
+<!-- Daily Goal Tracker Bar Divider -->
+<div class="mt-space-md pt-space-md border-t border-outline-variant/30 relative z-10 space-y-space-xs">
+<div class="flex justify-between items-center text-label-md font-label-md">
+<span class="text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[16px]" data-icon="schedule">schedule</span>
+              今日口說進度
+            </span>
+<span class="text-on-surface-variant font-bold"><span class="text-secondary">12</span> / 15 分鐘</span>
+</div>
+<!-- Linear Progress bar -->
+<div class="w-full bg-surface-container-highest rounded-full h-2 overflow-hidden">
+<div class="bg-gradient-to-r from-primary-container to-secondary h-2 rounded-full w-[80%] transition-all duration-500 shadow-[0_0_8px_rgba(74,225,118,0.5)]"></div>
+</div>
+<div class="flex items-center justify-between pt-1">
+<p class="text-label-sm font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-secondary text-[14px]" data-icon="check_circle">check_circle</span>
+              再練習 3 分鐘解鎖今日徽章！
+            </p>
+<span class="text-label-sm font-label-sm text-primary font-semibold hover:underline cursor-pointer">設定目標</span>
+</div>
+</div>
+</section>
+<!-- TODAY'S SPEAKING CHALLENGE CARD -->
+<section class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[20px]" data-icon="auto_awesome" data-weight="fill">auto_awesome</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">今日口說挑戰</h2>
+</div>
+<span class="text-label-sm font-label-sm text-outline">每日 04:00 更新</span>
+</div>
+<div class="relative p-[1.5px] rounded-lg bg-gradient-to-r from-primary-container via-surface-variant to-secondary shadow-lg group hover:shadow-primary-container/20 transition-all duration-300">
+<div class="bg-surface-container-high rounded-lg p-space-md space-y-space-md">
+<!-- Header Tags -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="bg-primary-container/30 text-primary border border-primary/30 px-space-sm py-0.5 rounded-full text-label-sm font-label-sm">
+                  中級 (B1-B2)
+                </span>
+<span class="bg-surface-container-highest text-on-surface-variant px-space-sm py-0.5 rounded-full text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="timelapse">timelapse</span>
+                  預計 3 分鐘
+                </span>
+</div>
+<span class="text-label-sm font-label-sm text-secondary bg-secondary-container/20 px-2 py-0.5 rounded-full font-bold">+50 經驗值</span>
+</div>
+<!-- Content Title & Prompt -->
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+                在星巴克點燕麥奶拿鐵
+              </h3>
+<p class="text-body-sm font-body-sm text-outline mt-0.5">Coffee Shop Ordering Scenario</p>
+<div class="mt-space-sm p-space-sm bg-surface-container-low rounded-DEFAULT border border-outline-variant/30 flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[18px] flex-shrink-0 mt-0.5" data-icon="record_voice_over">record_voice_over</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant">
+                  特別強化：美式連音發音中的燕麥奶 <span class="text-primary font-bold">Oat milk</span> 與大杯 <span class="text-primary font-bold">Grande</span> 腔調轉折。
+                </p>
+</div>
+</div>
+<!-- Phoneme Accent Chips -->
+<div class="flex items-center gap-space-xs">
+<span class="text-label-sm font-label-sm text-outline">重點音標:</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-md font-label-md text-primary font-mono">/oʊt/</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-md font-label-md text-primary font-mono">/ˈɡrɑːn.deɪ/</span>
+<span class="bg-surface-container px-2 py-0.5 rounded text-label-md font-label-md text-secondary font-mono">/ˈlɑː.teɪ/</span>
+</div>
+<!-- CTA Button -->
+<button class="w-full py-space-sm px-space-md bg-gradient-to-r from-primary-container to-inverse-primary hover:opacity-95 text-white font-label-lg rounded-full flex items-center justify-center gap-space-xs shadow-md shadow-primary-container/30 active:scale-98 transition-all">
+<span>立即開口挑戰</span>
+<span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- PROMINENT VOICE ACTION: 隨時開口說 (Free Talk) -->
+<section class="pt-space-xs">
+<div class="bg-surface-container rounded-lg p-space-md border border-outline-variant/30 relative overflow-hidden flex items-center justify-between gap-space-md">
+<div class="space-y-1">
+<span class="text-label-sm font-label-sm text-secondary font-semibold uppercase tracking-wider">即時 AI 語音教練</span>
+<h3 class="text-headline-md font-headline-md text-on-surface">隨時開口說 (Free Talk)</h3>
+<p class="text-body-sm font-body-sm text-outline">不限主題自由對話，即時語法矯正</p>
+</div>
+<!-- Thumb-friendly Floating Mic Button -->
+<button class="relative w-16 h-16 rounded-full bg-gradient-to-br from-primary-container to-inverse-primary flex items-center justify-center text-white shadow-[0_8px_24px_-4px_rgba(79,70,229,0.6)] hover:scale-105 active:scale-95 transition-all flex-shrink-0 group">
+<!-- Concentric Pulse Wave Rings -->
+<span class="absolute inset-0 rounded-full border border-primary/40 animate-ping opacity-75"></span>
+<span class="material-symbols-outlined text-[32px] group-hover:scale-110 transition-transform" data-icon="mic" data-weight="fill">mic</span>
+</button>
+</div>
+</section>
+<!-- RECOMMENDED DAILY PRACTICES (Bento-style list) -->
+<section class="space-y-space-sm pb-space-lg">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[20px]" data-icon="recommend">recommend</span>
+<h2 class="text-headline-md font-headline-md text-on-surface">專屬客製特訓</h2>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold cursor-pointer hover:underline">查看全部 (8)</span>
+</div>
+<div class="space-y-space-sm">
+<!-- Item 1: Business AI Roleplay -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg border border-outline-variant/20 flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-DEFAULT bg-primary-container/20 text-primary flex items-center justify-center flex-shrink-0 border border-primary-container/30">
+<span class="material-symbols-outlined text-[24px]" data-icon="business_center">business_center</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-primary bg-primary/10 px-1.5 py-0.5 rounded">AI 角色扮演</span>
+<span class="text-label-sm font-label-sm text-outline">進階 B2-C1</span>
+</div>
+<h4 class="text-body-xl font-body-xl text-on-surface font-semibold group-hover:text-primary transition-colors">商務日常：跨國會議自我介紹</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">掌握正式商業語氣與開場破冰技巧</p>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-outline group-hover:text-on-surface transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+<!-- Item 2: Taiwanese Accent Phonetic Workout -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg border border-outline-variant/20 flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-DEFAULT bg-secondary/15 text-secondary flex items-center justify-center flex-shrink-0 border border-secondary/30">
+<span class="material-symbols-outlined text-[24px]" data-icon="graphic_eq">graphic_eq</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-secondary bg-secondary/10 px-1.5 py-0.5 rounded">發音特訓</span>
+<span class="text-label-sm font-label-sm text-outline">口型即時對比</span>
+</div>
+<h4 class="text-body-xl font-body-xl text-on-surface font-semibold group-hover:text-secondary transition-colors">攻克台灣人常混淆的 R / L 舌音</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">Right vs Light 雙頻譜音調視覺反饋</p>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-outline group-hover:text-on-surface transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+<!-- Item 3: Shadowing TED Talk -->
+<div class="bg-surface-container hover:bg-surface-container-high transition-colors p-space-md rounded-lg border border-outline-variant/20 flex items-center justify-between cursor-pointer group">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-DEFAULT bg-tertiary-container/30 text-tertiary flex items-center justify-center flex-shrink-0 border border-tertiary/30">
+<span class="material-symbols-outlined text-[24px]" data-icon="record_voice_over">record_voice_over</span>
+</div>
+<div class="space-y-0.5">
+<div class="flex items-center gap-2">
+<span class="text-label-sm font-label-sm text-tertiary bg-tertiary/10 px-1.5 py-0.5 rounded">跟讀練習</span>
+<span class="text-label-sm font-label-sm text-outline">TED 權威語料</span>
+</div>
+<h4 class="text-body-xl font-body-xl text-on-surface font-semibold group-hover:text-tertiary transition-colors">TED 演講名人發音節奏</h4>
+<p class="text-body-sm font-body-sm text-on-surface-variant">同步跟讀 (Shadowing) 練習自然語速重音</p>
+</div>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-outline group-hover:text-on-surface transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]" data-icon="play_arrow" data-weight="fill">play_arrow</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Component (from Shared Components JSON) -->
+<!-- '首頁' is active, destination_count: 4 -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-center pb-4 pointer-events-none">
+<nav class="pointer-events-auto bg-surface-container-lowest/85 dark:bg-surface-container-lowest/85 backdrop-blur-xl border border-outline-variant/30 dark:border-outline-variant/30 shadow-2xl fixed bottom-4 left-1/2 -translate-x-1/2 rounded-full w-[calc(100%-2.5rem)] max-w-[480px] px-6 py-2 flex justify-between items-center">
+<!-- Tab 1: 首頁 (ACTIVE) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary relative after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 active:scale-95 transition-transform duration-150 py-1">
+<span class="material-symbols-outlined text-[22px]" data-icon="home" data-weight="fill">home</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-bold">首頁</span>
+</button>
+<!-- Tab 2: AI 對話 -->
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 active:scale-95 transition-transform duration-150 py-1">
+<span class="material-symbols-outlined text-[22px]" data-icon="forum">forum</span>
+<span class="text-label-sm font-label-sm mt-0.5">AI 對話</span>
+</button>
+<!-- Tab 3: 口說特訓 -->
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 active:scale-95 transition-transform duration-150 py-1">
+<span class="material-symbols-outlined text-[22px]" data-icon="mic">mic</span>
+<span class="text-label-sm font-label-sm mt-0.5">口說特訓</span>
+</button>
+<!-- Tab 4: 成長紀錄 -->
+<button class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 active:scale-95 transition-transform duration-150 py-1">
+<span class="material-symbols-outlined text-[22px]" data-icon="insights">insights</span>
+<span class="text-label-sm font-label-sm mt-0.5">成長紀錄</span>
+</button>
+</nav>
+</div>
+</div>
+</body></html>

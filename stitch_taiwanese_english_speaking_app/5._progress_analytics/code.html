@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TalkFlow 口說潮 - 學習成長數據</title>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-tertiary-fixed-variant": "#862200",
+            "inverse-on-surface": "#293040",
+            "on-error-container": "#ffdad6",
+            "secondary-fixed": "#6bff8f",
+            "surface-tint": "#c3c0ff",
+            "on-error": "#690005",
+            "surface-bright": "#323949",
+            "outline": "#918fa1",
+            "surface-container-highest": "#2e3545",
+            "on-surface": "#dce2f7",
+            "on-secondary-fixed-variant": "#005321",
+            "background": "#0c1322",
+            "error": "#ffb4ab",
+            "on-secondary-container": "#004119",
+            "on-surface-variant": "#c7c4d8",
+            "primary": "#c3c0ff",
+            "on-primary-container": "#dad7ff",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-tertiary-container": "#ffd1c5",
+            "surface-dim": "#0c1322",
+            "surface-container-lowest": "#070e1d",
+            "outline-variant": "#464555",
+            "tertiary-fixed": "#ffdbd1",
+            "on-secondary-fixed": "#002109",
+            "surface-container-low": "#141b2b",
+            "inverse-surface": "#dce2f7",
+            "tertiary": "#ffb5a0",
+            "on-secondary": "#003915",
+            "on-background": "#dce2f7",
+            "inverse-primary": "#4d44e3",
+            "on-primary": "#1d00a5",
+            "secondary": "#4ae176",
+            "primary-container": "#4f46e5",
+            "on-tertiary-fixed": "#3b0900",
+            "tertiary-fixed-dim": "#ffb5a0",
+            "surface-container-high": "#232a3a",
+            "error-container": "#93000a",
+            "on-tertiary": "#5f1500",
+            "secondary-container": "#00b954",
+            "surface-variant": "#2e3545",
+            "secondary-fixed-dim": "#4ae176",
+            "surface-container": "#191f2f",
+            "on-primary-fixed": "#0f0069",
+            "primary-fixed": "#e2dfff",
+            "surface": "#0c1322",
+            "on-primary-fixed-variant": "#3323cc",
+            "tertiary-container": "#b33000"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.25rem",
+            "space-md": "1rem",
+            "gutter": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "body-lg": ["Inter"],
+            "label-lg": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Inter"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "label-md": ["Inter"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-xl": ["Inter"],
+            "phonetic-display": ["Inter"],
+            "body-md": ["Inter"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+            "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "700" }],
+            "headline-xl": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label-md": ["12px", { "lineHeight": "16px", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "48px", "fontWeight": "800" }],
+            "body-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "headline-lg": ["26px", { "lineHeight": "34px", "fontWeight": "700" }],
+            "body-xl": ["18px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "phonetic-display": ["22px", { "lineHeight": "30px", "fontWeight": "500" }],
+            "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen flex flex-col items-center select-none pb-[120px]">
+<!-- TopAppBar Component (Rendered strictly from Shared Components JSON) -->
+<header class="w-full bg-surface-dim dark:bg-surface-dim border-b border-outline-variant/20 dark:border-outline-variant/20 sticky top-0 z-40 backdrop-blur-md">
+<div class="flex justify-between items-center w-full px-margin max-w-[480px] mx-auto py-3">
+<!-- Leading Profile Avatar with Badge -->
+<div class="flex items-center gap-space-sm cursor-pointer hover:opacity-90 transition-opacity">
+<div class="relative w-9 h-9 rounded-full bg-surface-container-high border border-outline-variant/30 flex items-center justify-center text-primary font-headline-md text-headline-md font-bold overflow-hidden shadow-inner">
+<span class="text-body-md font-body-md font-bold">TW</span>
+<div class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full border-2 border-surface-dim"></div>
+</div>
+<div class="flex flex-col">
+<span class="text-headline-md font-headline-md font-extrabold text-primary dark:text-primary tracking-tight">TalkFlow 口說潮</span>
+<span class="text-label-sm font-label-sm text-outline">學習成長數據 (Progress)</span>
+</div>
+</div>
+<!-- Trailing Action: 14 天連續 -->
+<div class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-tertiary-container/30 border border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary text-[18px] fill-icon" data-icon="local_fire_department" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-label-md font-label-md text-tertiary font-bold tracking-wide">14 天連續</span>
+</div>
+</div>
+</header>
+<!-- Main Content Container (Strict 480px Mobile Constraint) -->
+<main class="w-full max-w-[480px] px-margin flex flex-col gap-space-lg mt-space-md">
+<!-- Top Status Banner: Rank & Date Filter -->
+<div class="flex items-center justify-between bg-surface-container-low p-space-md rounded-xl border border-outline-variant/20 shadow-sm">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]" data-icon="social_leaderboard">social_leaderboard</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">每週排行榮譽</span>
+<span class="text-label-lg font-label-lg text-secondary font-bold">台灣區口說榜 Top 5%</span>
+</div>
+</div>
+<div class="flex items-center gap-1 bg-surface-container-high px-2.5 py-1.5 rounded-full border border-outline-variant/30 text-outline">
+<span class="material-symbols-outlined text-[14px]" data-icon="calendar_today">calendar_today</span>
+<span class="text-label-sm font-label-sm font-medium text-on-surface">本週 10/14 - 10/20</span>
+</div>
+</div>
+<!-- Section 1: Weekly Speaking Goal & Time Chart -->
+<section class="bg-surface-container p-space-lg rounded-xl border border-outline-variant/20 shadow-md flex flex-col gap-space-md">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-label-sm font-label-sm text-outline tracking-wider block mb-0.5">每週開口訓練量</span>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold">每週口說達標時數</h2>
+</div>
+<div class="flex items-center gap-1 text-secondary text-label-md font-label-md bg-secondary/10 px-2 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[14px] fill-icon" data-icon="trending_up" data-weight="fill" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span>良好節奏</span>
+</div>
+</div>
+<!-- Weekly Progress Radial Ring + Summary -->
+<div class="flex items-center justify-between bg-surface-container-low p-space-md rounded-lg border border-outline-variant/15">
+<!-- SVG Radial Ring (84%) -->
+<div class="relative w-20 h-20 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 72 72">
+<!-- Background circle track -->
+<circle class="text-surface-container-high" cx="36" cy="36" fill="none" r="30" stroke="currentColor" stroke-width="6"></circle>
+<!-- Active progress arc (84% of 188.5 is ~158.3) -->
+<circle class="text-secondary stroke-round" cx="36" cy="36" fill="none" r="30" stroke="currentColor" stroke-dasharray="188.5" stroke-dashoffset="30.16" stroke-linecap="round" stroke-width="6"></circle>
+</svg>
+<div class="absolute flex flex-col items-center justify-center">
+<span class="text-headline-md font-headline-md text-on-surface font-extrabold leading-none">84<span class="text-body-sm font-body-sm font-normal text-outline">%</span></span>
+</div>
+</div>
+<div class="flex flex-col justify-center pl-2 flex-grow">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-tertiary text-[18px] fill-icon" data-icon="local_fire_department" data-weight="fill" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-body-xl font-body-xl font-bold text-on-surface">本週已練習 84 / 100 分鐘</span>
+</div>
+<p class="text-body-sm font-body-sm text-outline">距離達成週末徽章僅差 16 分鐘！今日推薦練習 1 回 AI 真實對話。</p>
+</div>
+</div>
+<!-- 7-Day Vertical Bar Chart -->
+<div class="mt-2">
+<div class="flex justify-between items-center mb-3">
+<span class="text-label-sm font-label-sm text-outline uppercase">每日開口時長 (分鐘)</span>
+<span class="text-label-sm font-label-sm text-primary font-medium">週四顛峰 22 mins</span>
+</div>
+<!-- Bars Container: Mon to Sun -->
+<div class="grid grid-cols-7 gap-2 items-end h-32 pt-2 pb-1 border-b border-outline-variant/20">
+<!-- Mon: 10m -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-label-sm font-label-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">10</span>
+<div class="w-full bg-surface-container-high rounded-full overflow-hidden flex flex-col justify-end" style="height: 45%;">
+<div class="w-full bg-primary-container/70 h-full rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-outline">一</span>
+</div>
+<!-- Tue: 14m -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-label-sm font-label-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">14</span>
+<div class="w-full bg-surface-container-high rounded-full overflow-hidden flex flex-col justify-end" style="height: 60%;">
+<div class="w-full bg-primary-container/80 h-full rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-outline">二</span>
+</div>
+<!-- Wed: 12m -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-label-sm font-label-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">12</span>
+<div class="w-full bg-surface-container-high rounded-full overflow-hidden flex flex-col justify-end" style="height: 52%;">
+<div class="w-full bg-primary-container/75 h-full rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-outline">三</span>
+</div>
+<!-- Thu: 22m (Peak) -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group relative">
+<div class="absolute -top-3 px-1.5 py-0.5 bg-primary text-on-primary rounded text-[9px] font-bold shadow-md shadow-primary/20">22m</div>
+<div class="w-full bg-surface-container-high rounded-full overflow-hidden flex flex-col justify-end" style="height: 95%;">
+<div class="w-full bg-gradient-to-t from-primary-container to-surface-tint h-full rounded-full shadow-[0_0_12px_rgba(99,102,241,0.5)]"></div>
+</div>
+<span class="text-label-sm font-label-sm text-primary font-bold">四</span>
+</div>
+<!-- Fri: 16m -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-label-sm font-label-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">16</span>
+<div class="w-full bg-surface-container-high rounded-full overflow-hidden flex flex-col justify-end" style="height: 70%;">
+<div class="w-full bg-primary-container h-full rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-outline">五</span>
+</div>
+<!-- Sat: 10m (Today) -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-label-sm font-label-sm text-outline opacity-0 group-hover:opacity-100 transition-opacity">10</span>
+<div class="w-full bg-surface-container-high rounded-full overflow-hidden flex flex-col justify-end" style="height: 45%;">
+<div class="w-full bg-primary-container/70 h-full rounded-full"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface font-semibold">六</span>
+</div>
+<!-- Sun: 0m (Upcoming) -->
+<div class="flex flex-col items-center gap-2 h-full justify-end">
+<span class="text-label-sm font-label-sm text-outline">日</span>
+<div class="w-full bg-surface-container-high/40 rounded-full border border-dashed border-outline-variant/40" style="height: 15%;"></div>
+<span class="text-label-sm font-label-sm text-outline">日</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Pronunciation Accuracy Trend Line -->
+<section class="bg-surface-container p-space-lg rounded-xl border border-outline-variant/20 shadow-md flex flex-col gap-space-md">
+<div class="flex justify-between items-start">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold">AI 發音精準度趨勢</h2>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold flex items-center gap-1">
+              提升了 +13% 📈
+            </span>
+</div>
+<span class="text-body-sm font-body-sm text-outline mt-0.5 block">過去 4 週台式盲點校正成效</span>
+</div>
+<div class="text-right">
+<span class="text-display-lg font-display-lg text-primary font-extrabold leading-none">91<span class="text-headline-md font-headline-md text-outline font-normal">%</span></span>
+<span class="block text-label-sm font-label-sm text-outline">最新評測均分</span>
+</div>
+</div>
+<!-- Trend Chart Visualization -->
+<div class="relative w-full h-36 mt-2 bg-surface-container-low/70 rounded-lg p-3 border border-outline-variant/15 flex flex-col justify-between">
+<!-- Background guide grids -->
+<div class="absolute inset-0 px-4 py-3 flex flex-col justify-between pointer-events-none opacity-20">
+<div class="w-full border-b border-outline"></div>
+<div class="w-full border-b border-outline"></div>
+<div class="w-full border-b border-outline"></div>
+</div>
+<!-- SVG Line Chart Path -->
+<svg class="w-full h-24 overflow-visible" viewbox="0 0 320 80">
+<defs>
+<lineargradient id="trendGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4F46E5" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#4F46E5" stop-opacity="0.0"></stop>
+</lineargradient>
+<filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+<fegaussianblur result="blur" stddeviation="3"></fegaussianblur>
+<fecomposite in="SourceGraphic" in2="blur" operator="over"></fecomposite>
+</filter>
+</defs>
+<!-- Area fill -->
+<polygon fill="url(#trendGradient)" points="20,62 100,45 180,34 280,14 280,78 20,78"></polygon>
+<!-- Line -->
+<polyline fill="none" filter="url(#glow)" points="20,62 100,45 180,34 280,14" stroke="#C3C0FF" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></polyline>
+<!-- Data Points -->
+<!-- W1: 78% (y=62) -->
+<circle cx="20" cy="62" fill="#141B2B" r="4.5" stroke="#C3C0FF" stroke-width="2.5"></circle>
+<text fill="#918FA1" font-size="10" font-weight="600" text-anchor="middle" x="20" y="52">78%</text>
+<!-- W2: 83% (y=45) -->
+<circle cx="100" cy="45" fill="#141B2B" r="4.5" stroke="#C3C0FF" stroke-width="2.5"></circle>
+<text fill="#918FA1" font-size="10" font-weight="600" text-anchor="middle" x="100" y="35">83%</text>
+<!-- W3: 86% (y=34) -->
+<circle cx="180" cy="34" fill="#141B2B" r="4.5" stroke="#C3C0FF" stroke-width="2.5"></circle>
+<text fill="#918FA1" font-size="10" font-weight="600" text-anchor="middle" x="180" y="24">86%</text>
+<!-- W4: 91% (y=14) Active Glowing -->
+<circle class="animate-pulse" cx="280" cy="14" fill="#4AE176" r="6" stroke="#FFFFFF" stroke-width="2.5"></circle>
+<text fill="#4AE176" font-size="11" font-weight="700" text-anchor="middle" x="280" y="6">91%</text>
+</svg>
+<!-- Week Labels -->
+<div class="flex justify-between items-center text-label-sm font-label-sm text-outline px-1">
+<span>第 1 週 (入學)</span>
+<span>第 2 週</span>
+<span>第 3 週</span>
+<span class="text-secondary font-bold">第 4 週 (本週)</span>
+</div>
+</div>
+</section>
+<!-- Section 3: Mastered Sounds Grid (台灣學員攻克音標庫) -->
+<section class="bg-surface-container p-space-lg rounded-xl border border-outline-variant/20 shadow-md flex flex-col gap-space-md">
+<div class="flex justify-between items-center">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Phoneme Mastery</span>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold">台灣學員攻克音標庫</h2>
+</div>
+<span class="text-body-sm font-body-sm text-outline">已掌握 5/6 組音</span>
+</div>
+<!-- Bento Phoneme Grid (6 items) -->
+<div class="grid grid-cols-2 gap-space-sm">
+<!-- Item 1: θ (th) -->
+<div class="bg-surface-container-low p-3.5 rounded-lg border border-outline-variant/15 flex flex-col justify-between hover:border-secondary/50 transition-colors">
+<div class="flex items-center justify-between mb-2">
+<span class="font-phonetic-display text-phonetic-display font-semibold text-primary px-2 py-0.5 rounded-full bg-primary-container/20">/θ/</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold">
+              94% 已精通
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface font-medium">θ (th) 咬舌音</span>
+<span class="material-symbols-outlined text-secondary text-[18px] fill-icon" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Item 2: r / l -->
+<div class="bg-surface-container-low p-3.5 rounded-lg border border-outline-variant/15 flex flex-col justify-between hover:border-secondary/50 transition-colors">
+<div class="flex items-center justify-between mb-2">
+<span class="font-phonetic-display text-phonetic-display font-semibold text-primary px-2 py-0.5 rounded-full bg-primary-container/20">/r/ · /l/</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold">
+              88% 優良
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface font-medium">r / l 舌位分辨</span>
+<span class="material-symbols-outlined text-secondary text-[18px] fill-icon" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Item 3: v / b -->
+<div class="bg-surface-container-low p-3.5 rounded-lg border border-outline-variant/15 flex flex-col justify-between hover:border-secondary/50 transition-colors">
+<div class="flex items-center justify-between mb-2">
+<span class="font-phonetic-display text-phonetic-display font-semibold text-primary px-2 py-0.5 rounded-full bg-primary-container/20">/v/ · /b/</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold">
+              92% 已精通
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface font-medium">v / b 唇齒氣流</span>
+<span class="material-symbols-outlined text-secondary text-[18px] fill-icon" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Item 4: æ (短母音) - Amber Orange Tag (練習中) -->
+<div class="bg-surface-container-low p-3.5 rounded-lg border border-tertiary-container/40 flex flex-col justify-between hover:border-tertiary/60 transition-colors relative overflow-hidden">
+<div class="absolute -right-5 -bottom-5 w-16 h-16 bg-tertiary/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-phonetic-display text-phonetic-display font-semibold text-tertiary px-2 py-0.5 rounded-full bg-tertiary-container/30">/æ/</span>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-container text-tertiary-fixed text-label-sm font-label-sm font-bold">
+              76% 練習中
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface font-medium">æ (蝴蝶短母音)</span>
+<span class="material-symbols-outlined text-tertiary text-[18px]" data-icon="replay">replay</span>
+</div>
+</div>
+<!-- Item 5: ŋ (鼻音) -->
+<div class="bg-surface-container-low p-3.5 rounded-lg border border-outline-variant/15 flex flex-col justify-between hover:border-secondary/50 transition-colors">
+<div class="flex items-center justify-between mb-2">
+<span class="font-phonetic-display text-phonetic-display font-semibold text-primary px-2 py-0.5 rounded-full bg-primary-container/20">/ŋ/</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold">
+              85% 優良
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface font-medium">ŋ (鼻尾音 sing)</span>
+<span class="material-symbols-outlined text-secondary text-[18px] fill-icon" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Item 6: ʃ / tʃ -->
+<div class="bg-surface-container-low p-3.5 rounded-lg border border-outline-variant/15 flex flex-col justify-between hover:border-secondary/50 transition-colors">
+<div class="flex items-center justify-between mb-2">
+<span class="font-phonetic-display text-phonetic-display font-semibold text-primary px-2 py-0.5 rounded-full bg-primary-container/20">/ʃ/ · /tʃ/</span>
+<span class="px-2 py-0.5 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold">
+              90% 已精通
+            </span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface font-medium">ʃ / tʃ 氣息摩擦</span>
+<span class="material-symbols-outlined text-secondary text-[18px] fill-icon" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Milestones & Achievements (里程碑成就徽章) -->
+<section class="bg-surface-container p-space-lg rounded-xl border border-outline-variant/20 shadow-md flex flex-col gap-space-md">
+<div class="flex justify-between items-center">
+<div>
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">Achievements</span>
+<h2 class="text-headline-md font-headline-md text-on-surface font-bold">里程碑成就徽章</h2>
+</div>
+<span class="text-label-md font-label-md text-primary font-semibold cursor-pointer hover:underline">查看全部 12 個</span>
+</div>
+<div class="flex flex-col gap-space-sm">
+<!-- Badge 1: 🏆 連講 14 天 (解鎖完成) -->
+<div class="flex items-center justify-between p-3.5 rounded-lg bg-surface-container-low border border-outline-variant/15 relative overflow-hidden group">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-tertiary-container/30 border border-tertiary/40 flex items-center justify-center text-[22px] shadow-sm">
+              🏆
+            </div>
+<div class="flex flex-col">
+<span class="text-body-lg font-body-lg font-bold text-on-surface">連講 14 天</span>
+<span class="text-body-sm font-body-sm text-outline">養成每日不中斷的自信口說節奏</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] fill-icon" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+            解鎖完成
+          </span>
+</div>
+<!-- Badge 2: 🎙️ 累計開口 500 句 (已達成 520 句) -->
+<div class="flex items-center justify-between p-3.5 rounded-lg bg-surface-container-low border border-outline-variant/15 relative overflow-hidden group">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-primary-container/20 border border-primary/30 flex items-center justify-center text-[22px] shadow-sm">
+              🎙️
+            </div>
+<div class="flex flex-col">
+<span class="text-body-lg font-body-lg font-bold text-on-surface">累計開口 500 句</span>
+<span class="text-body-sm font-body-sm text-outline">已超越門檻！當前已累積 520 句</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary/15 text-secondary text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] fill-icon" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+            已達成 520 句
+          </span>
+</div>
+<!-- Badge 3: ☕ 生活點餐大師 (3 個咖啡廳/餐廳情境通關) -->
+<div class="flex items-center justify-between p-3.5 rounded-lg bg-surface-container-low border border-outline-variant/15 relative overflow-hidden group">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface-bright/50 border border-outline/30 flex items-center justify-center text-[22px] shadow-sm">
+              ☕
+            </div>
+<div class="flex flex-col">
+<span class="text-body-lg font-body-lg font-bold text-on-surface">生活點餐大師</span>
+<span class="text-body-sm font-body-sm text-outline">3 個咖啡廳與日常餐廳情境無礙通關</span>
+</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-primary-container/30 text-primary text-label-sm font-label-sm font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] fill-icon" data-icon="stars" data-weight="fill" style="font-variation-settings: 'FILL' 1;">stars</span>
+            情境通關 3/3
+          </span>
+</div>
+</div>
+</section>
+<!-- Section 5: Microphone Permission Bottom Sheet (First-use permission prompt preview) -->
+<section class="bg-gradient-to-b from-surface-container-high to-surface-container p-space-lg rounded-xl border border-primary/40 shadow-2xl relative overflow-hidden">
+<!-- Glow effect -->
+<div class="absolute -top-12 -left-12 w-32 h-32 bg-primary-container/20 rounded-full blur-2xl pointer-events-none"></div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary shadow-lg shadow-primary-container/40">
+<span class="material-symbols-outlined text-[26px]" data-icon="mic">mic</span>
+</div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-primary font-bold uppercase tracking-wider">即時發音健檢啟用</span>
+<h3 class="text-body-xl font-body-xl font-bold text-on-surface">開啟麥克風權限以解鎖 AI 即時發音評測</h3>
+</div>
+</div>
+<p class="text-body-sm font-body-sm text-outline bg-surface-container-low/60 p-2.5 rounded-lg border border-outline-variant/20 flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary flex-shrink-0 mt-0.5" data-icon="shield">shield</span>
+<span>錄音僅用於本地端發音分析，嚴格保護隱私，不進行非教學目的之儲存。</span>
+</p>
+<div class="flex items-center gap-3 mt-1">
+<button class="flex-1 py-3 px-4 rounded-full bg-primary-container text-on-primary font-label-lg font-bold hover:brightness-110 active:scale-95 transition-all text-center shadow-lg shadow-primary-container/30 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="lock_open">lock_open</span>
+<span>允許麥克風存取</span>
+</button>
+<button class="py-3 px-4 rounded-full bg-surface-container-highest text-outline font-label-md font-medium hover:text-on-surface active:scale-95 transition-all">
+            稍後再說
+          </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Component (Strictly implemented from Shared Components JSON with '成長紀錄' active) -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-center pb-4">
+<nav class="fixed bottom-4 left-1/2 -translate-x-1/2 rounded-full w-[calc(100%-2.5rem)] max-w-[480px] bg-surface-container-lowest/85 dark:bg-surface-container-lowest/85 backdrop-blur-xl border border-outline-variant/30 dark:border-outline-variant/30 shadow-2xl px-3 py-2 flex items-center justify-around">
+<!-- Nav Item 1: 首頁 (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="home">home</span>
+<span class="text-label-sm font-label-sm mt-0.5">首頁</span>
+</a>
+<!-- Nav Item 2: AI 對話 (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="forum">forum</span>
+<span class="text-label-sm font-label-sm mt-0.5">AI 對話</span>
+</a>
+<!-- Nav Item 3: 口說特訓 (Inactive) -->
+<a class="flex flex-col items-center justify-center text-outline dark:text-outline hover:text-on-surface hover:text-primary dark:hover:text-primary transition-colors duration-200 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px]" data-icon="mic">mic</span>
+<span class="text-label-sm font-label-sm mt-0.5">口說特訓</span>
+</a>
+<!-- Nav Item 4: 成長紀錄 (ACTIVE DESTINATION - Matches Current Screen '學習成長數據 (Progress)') -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary relative after:w-1 after:h-1 after:bg-primary after:rounded-full after:mt-1 Active: scale-95 transition-transform duration-150 py-1 px-3" href="#">
+<span class="material-symbols-outlined text-[22px] fill-icon" data-icon="insights" data-weight="fill" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="text-label-sm font-label-sm mt-0.5 font-bold">成長紀錄</span>
+</a>
+</nav>
+</div>
+</body></html>

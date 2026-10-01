@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mission Briefing - SFO T2 / CX-882</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "inverse-primary": "#b6c4ff",
+            "surface-container": "#eaedff",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface-container-high": "#e2e7ff",
+            "outline-variant": "#c5c5d3",
+            "surface-dim": "#d2d9f4",
+            "on-primary": "#ffffff",
+            "on-error-container": "#93000a",
+            "outline": "#757682",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#eef0ff",
+            "on-secondary-fixed": "#251a00",
+            "background": "#faf8ff",
+            "on-surface": "#131b2e",
+            "on-primary-fixed-variant": "#264191",
+            "surface-container-low": "#f2f3ff",
+            "primary-fixed": "#dce1ff",
+            "on-tertiary-container": "#27c38a",
+            "secondary": "#785a00",
+            "secondary-container": "#fdc425",
+            "surface": "#faf8ff",
+            "surface-bright": "#faf8ff",
+            "surface-variant": "#dae2fd",
+            "tertiary-container": "#004a31",
+            "tertiary": "#00311f",
+            "secondary-fixed": "#ffdf9a",
+            "on-surface-variant": "#444651",
+            "primary-container": "#1e3a8a",
+            "on-error": "#ffffff",
+            "tertiary-fixed": "#6ffbbe",
+            "on-secondary": "#ffffff",
+            "primary-fixed-dim": "#b6c4ff",
+            "on-secondary-fixed-variant": "#5a4300",
+            "on-primary-container": "#90a8ff",
+            "on-secondary-container": "#6d5200",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#005236",
+            "surface-container-highest": "#dae2fd",
+            "on-tertiary-fixed": "#002113",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "on-background": "#131b2e",
+            "surface-tint": "#4059aa",
+            "secondary-fixed-dim": "#f7be1d",
+            "inverse-surface": "#283044",
+            "on-primary-fixed": "#00164e",
+            "primary": "#00236f"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "1.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1rem",
+            "space-xl": "2.25rem",
+            "space-md": "1rem",
+            "space-xs": "0.25rem"
+          },
+          "fontFamily": {
+            "label-code-lg": ["JetBrains Mono"],
+            "label-code-md": ["JetBrains Mono"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-code-sm": ["JetBrains Mono"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-ui": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-code-lg": ["16px", { "lineHeight": "20px", "letterSpacing": "0.06em", "fontWeight": "700" }],
+            "label-code-md": ["13px", { "lineHeight": "16px", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "800" }],
+            "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "label-code-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "500" }],
+            "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "500" }],
+            "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "headline-md": ["22px", { "lineHeight": "28px", "fontWeight": "700" }],
+            "headline-sm": ["18px", { "lineHeight": "24px", "fontWeight": "700" }],
+            "label-ui": ["13px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "700" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Ticket perforation punch-outs */
+    .ticket-punch-left {
+      position: absolute;
+      left: -9px;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      background-color: #faf8ff;
+      border-right: 1px solid #c5c5d3;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+    .ticket-punch-right {
+      position: absolute;
+      right: -9px;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      background-color: #faf8ff;
+      border-left: 1px solid #c5c5d3;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased min-h-screen selection:bg-secondary-container selection:text-on-secondary-container pb-44">
+<!-- Mobile Container Envelope (Authoritative 4-Column Canvas) -->
+<div class="w-full max-w-md mx-auto min-h-screen flex flex-col relative bg-background shadow-2xl">
+<!-- JSON Anchor: TopAppBar -->
+<header class="bg-surface dark:bg-surface border-b border-outline-variant dark:border-outline shadow-sm dark:shadow-none flex justify-between items-center w-full px-margin py-space-sm max-w-md mx-auto sticky top-0 z-40">
+<button aria-label="Back" class="p-1 rounded text-primary dark:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-surface-container active:scale-95 transition-transform duration-150 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<div class="text-headline-sm font-headline-sm font-bold text-primary dark:text-inverse-primary tracking-tight">
+        SFO T2 / CX-882
+      </div>
+<button aria-label="Flight Status" class="p-1 rounded text-primary dark:text-inverse-primary hover:bg-surface-container-high dark:hover:bg-surface-container active:scale-95 transition-transform duration-150 flex items-center justify-center" type="button">
+<span class="material-symbols-outlined" data-icon="flight_takeoff">flight_takeoff</span>
+</button>
+</header>
+<!-- Sub-navigation Progress Band (FIDS Wayfinding Module) -->
+<nav aria-label="Training stages" class="bg-surface-container-low px-margin py-space-xs border-b border-outline-variant">
+<div class="flex items-center justify-between font-label-code-sm text-label-code-sm">
+<span class="inline-flex items-center gap-1 font-bold text-primary bg-surface-container-lowest px-2 py-0.5 rounded border border-outline-variant shadow-xs">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container animate-pulse"></span>
+          1. 任務簡報
+        </span>
+<span class="text-outline">›</span>
+<span class="text-on-surface-variant font-medium opacity-65">2. 實戰對話</span>
+<span class="text-outline">›</span>
+<span class="text-on-surface-variant font-medium opacity-65">3. 單字特訓</span>
+<span class="text-outline">›</span>
+<span class="text-on-surface-variant font-medium opacity-65">4. 評估覆盤</span>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin py-space-md space-y-space-md">
+<!-- FIDS Alert Announcement Ribbon -->
+<section aria-label="Urgent Flight Alert" class="rounded-xl overflow-hidden shadow-sm border border-outline-variant bg-surface-container-lowest">
+<div class="bg-primary px-space-md py-space-xs flex items-center justify-between text-on-primary">
+<div class="flex items-center space-x-1.5 font-label-code-sm text-label-code-sm tracking-wider">
+<span class="material-symbols-outlined text-secondary-container" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span>TRANSFER DESK ALERT</span>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-secondary-container font-semibold">T2 GATE B24</span>
+</div>
+<!-- Backlit Terminal Display Screen -->
+<div class="bg-inverse-surface p-space-md text-surface-bright flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<span class="font-label-code-sm text-label-code-sm text-outline-variant uppercase">Incident Context</span>
+<span class="bg-secondary text-secondary-fixed text-[10px] font-bold px-1.5 py-0.5 rounded border border-secondary-fixed-dim">
+              CRITICAL TIMING
+            </span>
+</div>
+<div class="font-label-code-lg text-label-code-lg text-secondary-container flex items-center gap-2">
+<span>CX-882</span>
+<span class="text-surface-dim font-normal text-xs">(DELAYED 50M)</span>
+<span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+<span class="text-surface-bright">AA-1940</span>
+</div>
+<div class="bg-surface-container-lowest/10 rounded p-2 flex items-start space-x-2 border border-surface-container-highest/20">
+<span class="material-symbols-outlined text-secondary-container text-base mt-0.5" data-icon="timer">timer</span>
+<p class="font-label-code-sm text-label-code-sm text-secondary-container font-medium leading-tight">
+              TIGHT CONNECTION: 40 MINS REMAINING TO SECURE BOARDING PASS &amp; RE-ROUTE LUGGAGE
+            </p>
+</div>
+</div>
+</section>
+<!-- Simulated Airport Announcement Audio Bar (Overhead PA System) -->
+<section aria-label="Terminal PA Announcement" class="bg-inverse-surface rounded-xl p-space-md shadow-md border border-outline-variant text-surface">
+<div class="flex items-center justify-between mb-2">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary-container" data-icon="volume_up" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+<span class="font-label-code-sm text-label-code-sm text-secondary-container uppercase">
+              Terminal PA Chime: Gate Transfer Area
+            </span>
+</div>
+<button class="text-on-primary-container bg-primary-container px-2 py-0.5 rounded font-label-code-sm text-label-code-sm hover:brightness-110 active:scale-95 transition-all flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-xs" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+            Replay
+          </button>
+</div>
+<p class="font-body-sm text-body-sm text-surface-container-low italic pl-1 border-l-2 border-secondary-container">
+          "Paging passenger holding connection to flight AA-1940. Please report immediately to the Service Concierge Desk at Terminal 2 for rebooking."
+        </p>
+<!-- Frequency waveform simulation -->
+<div aria-hidden="true" class="flex items-center gap-1 mt-3 h-3 px-1">
+<div class="w-1 bg-secondary-container h-2 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-3 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-1 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-2.5 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-1 rounded-full"></div>
+<div class="w-1 bg-outline-variant h-1 rounded-full"></div>
+<div class="w-1 bg-outline-variant h-1 rounded-full"></div>
+<div class="w-1 bg-outline-variant h-1 rounded-full"></div>
+<div class="w-1 bg-outline-variant h-1 rounded-full"></div>
+<div class="w-1 bg-outline-variant h-1 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-2 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-3 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-1.5 rounded-full"></div>
+<div class="w-1 bg-secondary-container h-2 rounded-full"></div>
+</div>
+</section>
+<!-- Mission Story & Objectives (Perforated Pass Card) -->
+<section class="relative bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm overflow-visible">
+<!-- Punch Out Cutouts -->
+<div class="ticket-punch-left"></div>
+<div class="ticket-punch-right"></div>
+<!-- Upper Pass Segment -->
+<div class="p-space-md">
+<div class="flex items-center justify-between border-b border-outline-variant/60 pb-2 mb-3">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-primary" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">任務情境背景</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant bg-surface-container px-2 py-0.5 rounded">
+              SFO-TRANSFER
+            </span>
+</div>
+<p class="font-body-md text-body-md text-on-surface leading-relaxed">
+            你的轉機航班因天候延誤抵達，目前距離銜接航班僅剩 <strong class="text-error font-bold">40 分鐘</strong>。你已來不及前往原登機門，必須立即在舊金山機場 T2 轉機服務櫃台向地勤人員尋求協助，完成改簽並爭取權益保障。
+          </p>
+</div>
+<!-- Physical Perforation Divider -->
+<div class="border-t-2 border-dashed border-outline-variant relative my-0"></div>
+<!-- Lower Stub Segment: Goals Checklist -->
+<div class="p-space-md bg-surface-container-low/50 rounded-b-xl">
+<h3 class="font-label-ui text-label-ui text-primary uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-base" data-icon="checklist">checklist</span>
+            本次溝通檢核目標 (Objectives)
+          </h3>
+<div class="space-y-2">
+<label class="flex items-start space-x-2.5 p-2 bg-surface-container-lowest rounded border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container mt-0.5 text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md font-semibold text-on-surface">說明前段航班延誤狀況</p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant">Explain delay and missed connection</p>
+</div>
+</label>
+<label class="flex items-start space-x-2.5 p-2 bg-surface-container-lowest rounded border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container mt-0.5 text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md font-semibold text-on-surface">要求改簽最早的下一班機</p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant">Request next available flight rebooking</p>
+</div>
+</label>
+<label class="flex items-start space-x-2.5 p-2 bg-surface-container-lowest rounded border border-outline-variant">
+<span class="material-symbols-outlined text-tertiary-container mt-0.5 text-lg" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div class="flex-1">
+<p class="font-body-md text-body-md font-semibold text-on-surface">詢問等待餐券與行李確認</p>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant">Ask for meal voucher &amp; luggage routing</p>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Key Phrases Cheat Sheet (High-Frequency Transit Vocabulary) -->
+<section aria-label="Key Communication Phrases" class="space-y-space-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-primary" data-icon="translate">translate</span>
+<h2 class="font-headline-sm text-headline-sm text-primary">必備關鍵句與真人示範</h2>
+</div>
+<span class="font-label-code-sm text-label-code-sm text-on-surface-variant">3 High-Yield</span>
+</div>
+<!-- Phrase Card 1 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-xs space-y-2">
+<div class="flex items-start justify-between gap-2">
+<p class="font-body-lg text-body-lg font-bold text-on-surface">
+              "My connecting flight was delayed, and I might miss my connection."
+            </p>
+<button aria-label="Play audio" class="p-2 bg-primary-container text-on-primary-container rounded-full hover:brightness-110 active:scale-95 transition-all flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-base" data-icon="volume_up" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">
+            /maɪ kəˈnɛktɪŋ flaɪt wʌz dɪˈleɪd, ænd aɪ maɪt mɪs maɪ kəˈnɛkʃən/
+          </p>
+<div class="flex items-center justify-between pt-1 border-t border-outline-variant/40">
+<span class="font-body-sm text-body-sm text-on-surface-variant">我的轉機前段班機延誤了，我很可能趕不上銜接航班。</span>
+<span class="bg-surface-container-high text-primary font-label-code-sm text-[10px] px-1.5 py-0.5 rounded font-bold">
+              0.8x 慢速可選
+            </span>
+</div>
+</article>
+<!-- Phrase Card 2 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-xs space-y-2">
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="inline-block bg-secondary-fixed text-on-secondary-fixed font-label-code-sm text-[10px] px-1.5 py-0.5 rounded font-bold mb-1">
+                高頻核心句
+              </span>
+<p class="font-body-lg text-body-lg font-bold text-on-surface">
+                "Can I be rebooked on the next available flight to New York?"
+              </p>
+</div>
+<button aria-label="Play audio" class="p-2 bg-primary-container text-on-primary-container rounded-full hover:brightness-110 active:scale-95 transition-all flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-base" data-icon="volume_up" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">
+            /kæn aɪ biː ˌriːˈbʊkt ɒn ðə nɛkst əˈveɪləbl flaɪt tuː njuː jɔːk/
+          </p>
+<div class="pt-1 border-t border-outline-variant/40">
+<span class="font-body-sm text-body-sm text-on-surface-variant">可以幫我改簽到前往紐約最早出發的下一班航班嗎？</span>
+</div>
+</article>
+<!-- Phrase Card 3 -->
+<article class="bg-surface-container-lowest rounded-xl p-space-md border border-outline-variant shadow-xs space-y-2">
+<div class="flex items-start justify-between gap-2">
+<p class="font-body-lg text-body-lg font-bold text-on-surface">
+              "Is there a meal voucher available while I wait for the next flight?"
+            </p>
+<button aria-label="Play audio" class="p-2 bg-primary-container text-on-primary-container rounded-full hover:brightness-110 active:scale-95 transition-all flex items-center justify-center shrink-0" type="button">
+<span class="material-symbols-outlined text-base" data-icon="volume_up" style="font-variation-settings: 'FILL' 1;">volume_up</span>
+</button>
+</div>
+<p class="font-label-code-sm text-label-code-sm text-on-surface-variant font-medium">
+            /ɪz ðeər ə miːl ˈvaʊtʃər əˈveɪləbl waɪl aɪ weɪt fɔː ðə nɛkst flaɪt/
+          </p>
+<div class="pt-1 border-t border-outline-variant/40">
+<span class="font-body-sm text-body-sm text-on-surface-variant">在我等候下一班機期間，有提供餐券補償嗎？</span>
+</div>
+</article>
+</section>
+<!-- Roleplay Agent Persona Preview Card -->
+<section class="bg-surface-container rounded-xl p-space-md border border-outline-variant flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary shrink-0 border border-outline">
+<span class="material-symbols-outlined text-2xl" data-icon="support_agent">support_agent</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h4 class="font-label-ui text-label-ui text-primary font-bold">地勤對話專員：Agent David</h4>
+<span class="font-label-code-sm text-[10px] text-tertiary-container font-semibold bg-tertiary-fixed px-1.5 py-0.5 rounded">ONLINE</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">
+            準備好後點擊下方按鈕，直接以語音進入模擬對話現場。
+          </p>
+</div>
+</section>
+</main>
+<!-- Persistent Floating Action Command Bar (Step Forward CTA) -->
+<div class="fixed bottom-14 left-0 w-full z-40 px-margin py-space-xs pointer-events-none">
+<div class="max-w-md mx-auto pointer-events-auto">
+<button class="w-full bg-primary-container hover:bg-primary text-on-primary py-3.5 px-space-md rounded-xl font-label-ui text-label-ui shadow-lg flex items-center justify-center space-x-2 border border-secondary-container/40 active:scale-95 transition-all" type="button">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-ping"></span>
+<span class="tracking-wide">開始與地勤對話 (Start Conversation)</span>
+<span class="material-symbols-outlined text-secondary-container" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- JSON Anchor: BottomNavBar (Active Destination: Briefing) -->
+<nav aria-label="App Primary Navigation" class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-xs py-space-xs max-w-md mx-auto bg-surface-container-lowest dark:bg-surface-container border-t border-outline-variant dark:border-outline shadow-sm dark:shadow-none">
+<!-- Destination 1: Briefing (ACTIVE) -->
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed text-on-primary-container dark:text-on-primary-fixed rounded-xl px-space-md py-space-xs active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="text-label-ui font-label-ui text-[11px] mt-0.5">Briefing</span>
+</button>
+<!-- Destination 2: Roleplay (INACTIVE) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-container-highest hover:text-on-surface dark:hover:text-on-surface active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="record_voice_over">record_voice_over</span>
+<span class="text-label-ui font-label-ui text-[11px] mt-0.5">Roleplay</span>
+</button>
+<!-- Destination 3: Vocab (INACTIVE) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-container-highest hover:text-on-surface dark:hover:text-on-surface active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="style">style</span>
+<span class="text-label-ui font-label-ui text-[11px] mt-0.5">Vocab</span>
+</button>
+<!-- Destination 4: Debrief (INACTIVE) -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-space-md py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-container-highest hover:text-on-surface dark:hover:text-on-surface active:scale-95 transition-all duration-150" type="button">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="text-label-ui font-label-ui text-[11px] mt-0.5">Debrief</span>
+</button>
+</nav>
+</div>
+</body></html>
